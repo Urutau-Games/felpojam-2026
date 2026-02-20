@@ -1,6 +1,7 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+compiled/
 desktop.ini
 **/desktop.ini
 *.orig

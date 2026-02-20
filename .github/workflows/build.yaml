@@ -28,10 +28,10 @@ jobs:
         run: mkdir -p compiled/windows compiled/linux
 
       - name: Export Linux release
-        run: godot --headless --path ./source/project.godot --export-release linux compiled/linux/${{ env.GAME_NAME }}.x86_64
+        run: godot --headless --path ./source/ --export-release linux ../compiled/linux/${{ env.GAME_NAME }}.x86_64
 
       - name: Export Windows release
-        run: godot --headless --path ./source/project.godot --export-release windows compiled/windows/${{ env.GAME_NAME }}.exe
+        run: godot --headless --path ./source/ --export-release windows ../compiled/windows/${{ env.GAME_NAME }}.exe
 
       - uses: actions/upload-artifact@v4
         with:
