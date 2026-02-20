@@ -35,7 +35,7 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: ${{ env.GAME_NAME }}-build
+          name: ${{ env.GAME_NAME }}
           path: |
             source/
             compiled/
