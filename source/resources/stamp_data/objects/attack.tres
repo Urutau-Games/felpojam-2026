@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="StampData" format=3 uid="uid://b0c1y874hs4lm"]
+
+[ext_resource type="Script" uid="uid://dc1rxrgqxyafw" path="res://resources/stamp_data/stamp_data.gd" id="1_2bm3q"]
+[ext_resource type="Texture2D" uid="uid://dqphwjs8ewk6v" path="res://assets/placeholders/strike.png" id="2_d3tik"]
+
+[resource]
+script = ExtResource("1_2bm3q")
+command = &"attack"
+command_size = 2
+stamp_texture = ExtResource("2_d3tik")
+metadata/_custom_type_script = "uid://dc1rxrgqxyafw"

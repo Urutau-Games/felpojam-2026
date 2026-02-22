@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="StampData" format=3 uid="uid://b4mk18ilvup2u"]
+
+[ext_resource type="Script" uid="uid://dc1rxrgqxyafw" path="res://resources/stamp_data/stamp_data.gd" id="1_vxm7v"]
+[ext_resource type="Texture2D" uid="uid://dchbppx8gmr5d" path="res://assets/placeholders/north.png" id="2_ybe4s"]
+
+[resource]
+script = ExtResource("1_vxm7v")
+command = &"north"
+stamp_texture = ExtResource("2_ybe4s")
+metadata/_custom_type_script = "uid://dc1rxrgqxyafw"

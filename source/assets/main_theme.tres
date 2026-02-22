@@ -1,0 +1,8 @@
+[gd_resource type="Theme" format=3 uid="uid://csbxthunacufw"]
+
+[resource]
+FullMarginContainer/base_type = &"MarginContainer"
+FullMarginContainer/constants/margin_bottom = 50
+FullMarginContainer/constants/margin_left = 50
+FullMarginContainer/constants/margin_right = 50
+FullMarginContainer/constants/margin_top = 50

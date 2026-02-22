@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="StampData" format=3 uid="uid://ciho53kie5t0f"]
+
+[ext_resource type="Script" uid="uid://dc1rxrgqxyafw" path="res://resources/stamp_data/stamp_data.gd" id="1_pnk0d"]
+[ext_resource type="Texture2D" uid="uid://dywbr3bprb1rg" path="res://assets/placeholders/disable_trap.png" id="2_aiu8u"]
+
+[resource]
+script = ExtResource("1_pnk0d")
+command = &"disarm"
+command_size = 2
+stamp_texture = ExtResource("2_aiu8u")
+metadata/_custom_type_script = "uid://dc1rxrgqxyafw"

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="StampData" format=3 uid="uid://b4dca3b4rl2hu"]
+
+[ext_resource type="Script" uid="uid://dc1rxrgqxyafw" path="res://resources/stamp_data/stamp_data.gd" id="1_3jlmb"]
+[ext_resource type="Texture2D" uid="uid://c8v6mfd6b1i8d" path="res://assets/placeholders/scan.png" id="2_hrytd"]
+
+[resource]
+script = ExtResource("1_3jlmb")
+command = &"scan"
+command_size = 3
+stamp_texture = ExtResource("2_hrytd")
+metadata/_custom_type_script = "uid://dc1rxrgqxyafw"
