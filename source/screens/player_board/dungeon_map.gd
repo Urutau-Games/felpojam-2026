@@ -9,7 +9,8 @@ var tile_code : Dictionary[String, Texture2D] = {
 	Constants.ROOM_CHEST: preload("res://assets/placeholders/chest.png"),
 	Constants.ROOM_HOLE: preload("res://assets/placeholders/hole.png"),
 	Constants.ROOM_MONSTER: preload("res://assets/placeholders/monster.png"),
-	Constants.ROOM_TRAP: preload("res://assets/placeholders/trap.png")
+	Constants.ROOM_TRAP: preload("res://assets/placeholders/trap.png"),
+	Constants.ROOM_TOTEM: preload("res://assets/placeholders/place_totem.png")
 }
 
 const AUTO_REVEALED_ROOMS: Array[StringName] = [Constants.ROOM_ENTRANCE, Constants.ROOM_DESTINATION]

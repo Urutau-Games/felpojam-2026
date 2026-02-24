@@ -26,6 +26,7 @@ const ROOM_CHEST: StringName = &'2'
 const ROOM_HOLE: StringName = &'4'
 const ROOM_MONSTER: StringName = &'5'
 const ROOM_TRAP: StringName = &'6'
+const ROOM_TOTEM: StringName = &'T'
 
 const MAX_COMMANDS: int = 10
 

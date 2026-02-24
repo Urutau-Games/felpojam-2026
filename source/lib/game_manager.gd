@@ -1,9 +1,12 @@
 extends Node
 
 signal position_revealed(position: Vector2i, room: StringName)
-signal command_started(command_index)
-signal command_finished(command_index)
-signal command_failed(command_index)
+
+signal command_started(command_index: int)
+signal command_finished(command_index: int)
+signal command_failed(command_index: int)
+
+#signal totem_placed(position: Vector2i)
 
 var active_stamp: StampData
 var current_position: Vector2i
@@ -31,6 +34,8 @@ var _command_map: Dictionary[StringName, Callable] = {
 var current_room: StringName:
 	get:
 		return dungeon[current_position.x][current_position.y]
+	set(value):
+		dungeon[current_position.x][current_position.y] = value
 
 func _ready() -> void:
 	var file := FileAccess.open("res://data/dungeons/dungeon_1.txt", FileAccess.READ)
@@ -86,10 +91,11 @@ func execute(commands: Array[String]) -> void:
 		command_finished.emit(command_index)
 		command_index += 1
 	
-	#if not completed:
-		#current_position = initial_position
+	if not completed:
+		current_position = initial_position
 
 func _reveal_current_position():
+	revealed_positions.push_back(current_position)
 	position_revealed.emit(current_position, current_room)
 
 func _is_in_boundaries(next_position: Vector2i):
@@ -143,8 +149,17 @@ func _scan() -> bool:
 	return true
 	
 func _totem() -> bool:
+	if totems_remaining == 0:
+		return false
+	
+	initial_position = current_position
+	totems_remaining -= 1
+	current_room = Constants.ROOM_TOTEM
 	return true
 	
 func _attack() -> bool:
+	if current_room == Constants.ROOM_MONSTER:
+		current_room = Constants.ROOM_EMPTY
+	
 	return true
 #endregion

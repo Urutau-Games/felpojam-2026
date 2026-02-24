@@ -1,6 +1,7 @@
 extends Control
 
 @onready var command_grid: GridContainer = %CommandGrid
+@onready var place_totem_button: TextureButton = %PlaceTotemButton
 
 var _used_slots: int = 0
 var _commands: Array[String] = []
@@ -48,3 +49,7 @@ func send() -> void:
 func _modulate_command(command_index: int, color: Color) -> void:
 	var tile = command_grid.get_child(command_index) as TextureRect
 	tile.modulate = color
+
+#TODO: Move some logic to observable
+func _process(_delta: float) -> void:
+	place_totem_button.disabled = GameManager.totems_remaining <= 0
