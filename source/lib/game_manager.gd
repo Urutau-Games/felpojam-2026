@@ -109,7 +109,6 @@ func execute(commands: Array[String]) -> void:
 	if command_index == commands.size():
 		current_room = starting_room
 
-
 func _on_command_failed(_command_index: int) -> void:
 	current_room = starting_room
 
@@ -129,8 +128,11 @@ func _is_in_boundaries(room: Vector2i):
 func _room_value(room: Vector2i) -> StringName:
 	return dungeon[room.x][room.y]
 
+func _has_monster() -> bool:
+	return current_room_content == Constants.ROOM_MONSTER
+
 func _can_move_to(room: Vector2i) -> bool:
-	return _is_in_boundaries(room) and not current_room_content == Constants.ROOM_MONSTER
+	return _is_in_boundaries(room) and not _has_monster()
 
 func _execute_move(room: Vector2i) -> bool:
 	if not _can_move_to(room):
@@ -154,6 +156,9 @@ func _south() -> bool:
 	return _execute_move(current_room + Constants.SOUTH_MOVEMENT)
 
 func _disarm() -> bool:
+	if _has_monster():
+		return false
+		
 	for possible_move in Constants.ADJACENT_ROOMS:
 		var next_room := current_room + possible_move
 		
@@ -164,6 +169,9 @@ func _disarm() -> bool:
 	return true
 	
 func _scan() -> bool:
+	if _has_monster():
+		return false
+		
 	var found_items: Dictionary[StringName, int] = {}
 	
 	for possible_move in Constants.ADJACENT_ROOMS:
@@ -181,7 +189,7 @@ func _scan() -> bool:
 	return true
 	
 func _totem() -> bool:
-	if totems_remaining == 0:
+	if totems_remaining == 0 or not current_room_content == Constants.ROOM_EMPTY:
 		return false
 	
 	starting_room = current_room
@@ -191,7 +199,7 @@ func _totem() -> bool:
 	return true
 	
 func _attack() -> bool:
-	if current_room_content == Constants.ROOM_MONSTER:
+	if _has_monster():
 		current_room_content = Constants.ROOM_EMPTY
 	
 	return true
