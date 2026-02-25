@@ -28,9 +28,38 @@ const ROOM_MONSTER: StringName = &'5'
 const ROOM_TRAP: StringName = &'6'
 const ROOM_TOTEM: StringName = &'T'
 
+const ROOM_NAMES: Dictionary[StringName, String] = {
+	ROOM_ENTRANCE: "entrada",
+	ROOM_DESTINATION: "destino",
+	ROOM_EMPTY: "vazio",
+	ROOM_CHEST: "baú",
+	ROOM_HOLE: "buraco",
+	ROOM_MONSTER: "monstro",
+	ROOM_TRAP: "armadilha",
+	ROOM_TOTEM: "totem"
+}
+
+const ROOM_HAZARDS: Array[StringName] = [
+	ROOM_TRAP,
+	ROOM_HOLE
+]
+
+const SCANNEABLE_ITEMS: Array[StringName] = [
+	ROOM_TRAP,
+	ROOM_HOLE,
+	ROOM_MONSTER
+]
+
 const MAX_COMMANDS: int = 10
 
 const EAST_MOVEMENT: Vector2i = Vector2i(0, 1)
 const WEST_MOVEMENT: Vector2i = Vector2i(0, -1)
 const NORTH_MOVEMENT: Vector2i = Vector2i(-1, 0)
 const SOUTH_MOVEMENT: Vector2i = Vector2i(1, 0)
+
+const ADJACENT_ROOMS: Array[Vector2i] = [
+	Constants.EAST_MOVEMENT, 
+	Constants.WEST_MOVEMENT, 
+	Constants.NORTH_MOVEMENT, 
+	Constants.SOUTH_MOVEMENT
+]

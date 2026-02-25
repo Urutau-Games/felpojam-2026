@@ -5,6 +5,10 @@ extends Control
 
 @onready var constructs_sent_label: Label = %ConstructsSentLabel
 @onready var remaining_totems: Label = %RemainingTotems
+@onready var congrats_layer: CanvasLayer = %CongratsLayer
+
+func _ready() -> void:
+	GameManager.target_reached.connect(_on_target_reached)
 
 func _on_clean_button_pressed() -> void:
 	command_panel.clear()
@@ -20,3 +24,9 @@ func _on_send_button_pressed() -> void:
 func _process(_delta: float) -> void:
 	constructs_sent_label.text = str(GameManager.used_constructs)
 	remaining_totems.text = str(GameManager.totems_remaining)
+
+func _on_target_reached() -> void:
+	congrats_layer.visible = true
+
+func _on_button_pressed() -> void:
+	get_tree().reload_current_scene()
