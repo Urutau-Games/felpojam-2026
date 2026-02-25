@@ -6,3 +6,10 @@ altura 765
 
 - grid
 altura ~67
+
+- carimbo
+largura 560
+altura 450
+
+- figura carimbada
+86x86px
