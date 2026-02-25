@@ -1,13 +1,21 @@
 extends Node
 
 signal position_revealed(position: Vector2i, room: StringName)
-signal command_started(command_index)
-signal command_finished(command_index)
-signal command_failed(command_index)
+
+signal command_started(command_index: int)
+signal command_finished(command_index: int)
+signal command_failed(command_index: int)
+
+signal construct_moved(from: Vector2i, to: Vector2i)
+signal dungeon_changed(position: Vector2i, new_value: StringName)
+
+signal scan_completed(items: Dictionary[StringName, int])
+
+signal target_reached()
 
 var active_stamp: StampData
-var current_position: Vector2i
-var initial_position: Vector2i
+var current_room: Vector2i
+var starting_room: Vector2i
 var target_position: Vector2i
 
 var dungeon: Array[Array] = []
@@ -28,22 +36,27 @@ var _command_map: Dictionary[StringName, Callable] = {
 	Constants.COMMAND_TOTEM: _totem
 }
 
-var current_room: StringName:
+var current_room_content: StringName:
 	get:
-		return dungeon[current_position.x][current_position.y]
+		return dungeon[current_room.x][current_room.y]
+	set(value):
+		dungeon[current_room.x][current_room.y] = value
+		dungeon_changed.emit(current_room, value)
 
 func _ready() -> void:
+	command_failed.connect(_on_command_failed)
+	
 	var file := FileAccess.open("res://data/dungeons/dungeon_1.txt", FileAccess.READ)
 	
 	while file.get_position() < file.get_length():
 		var line := file.get_line()
 		
-		if not initial_position:
+		if not starting_room:
 			var entrance := line.find(Constants.ENTRANCE_CHAR)
 		
 			if entrance > -1:
-				initial_position = Vector2i(dungeon.size(), entrance)
-				current_position = initial_position
+				starting_room = Vector2i(dungeon.size(), entrance)
+				current_room = starting_room
 		
 		if not target_position:
 			var destination := line.find(Constants.DESTINATION_CHAR)
@@ -63,88 +76,123 @@ func hold_stamp(stamp: StampData, hotspot: Vector2) -> void:
 
 func execute(commands: Array[String]) -> void:
 	used_constructs += 1
-	var completed := true
-	var previous_position := current_position
+	var previous_position := current_room
 	var command_index = 0
 	
 	for command in commands:
 		command_started.emit(command_index)
-		completed = _command_map[command].call()
 		
-		if not completed:
+		if not _command_map[command].call():
 			command_failed.emit(command_index)
 			break
 		
-		if(not current_position == previous_position):
-			print("Moved from %s to %s" % [previous_position, current_position])
-			previous_position = current_position
+		if(not current_room == previous_position):
+			construct_moved.emit(previous_position, current_room)
+			previous_position = current_room
 		
-		if not revealed_positions.has(current_position):
-			_reveal_current_position()
+		if not revealed_positions.has(current_room):
+			_reveal_current_room()
 
-		await get_tree().create_timer(0.5).timeout
-		command_finished.emit(command_index)
-		command_index += 1
+		if _is_hazard():
+			command_failed.emit(command_index)
+			break
+		elif _is_target():
+			command_finished.emit(command_index)
+			target_reached.emit()
+			break
+		else:
+			await get_tree().create_timer(0.5).timeout
+		
+			command_finished.emit(command_index)
+			command_index += 1
+			
+	if command_index == commands.size():
+		current_room = starting_room
+
+
+func _on_command_failed(_command_index: int) -> void:
+	current_room = starting_room
+
+func _reveal_current_room():
+	revealed_positions.push_back(current_room)
+	position_revealed.emit(current_room, current_room_content)
+
+func _is_hazard() -> bool:
+	return Constants.ROOM_HAZARDS.has(current_room_content)
+
+func _is_target() -> bool:
+	return current_room_content == Constants.ROOM_DESTINATION
+
+func _is_in_boundaries(room: Vector2i):
+	return Constants.DUNGEON_BOUNDARIES.has_point(room)
+
+func _room_value(room: Vector2i) -> StringName:
+	return dungeon[room.x][room.y]
+
+func _can_move_to(room: Vector2i) -> bool:
+	return _is_in_boundaries(room) and not current_room_content == Constants.ROOM_MONSTER
+
+func _execute_move(room: Vector2i) -> bool:
+	if not _can_move_to(room):
+		return false
 	
-	#if not completed:
-		#current_position = initial_position
-
-func _reveal_current_position():
-	position_revealed.emit(current_position, current_room)
-
-func _is_in_boundaries(next_position: Vector2i):
-	return Constants.DUNGEON_BOUNDARIES.has_point(next_position)
+	current_room = room
+	
+	return true
 
 #region Commands
 func _east() -> bool:
-	var next_position = current_position + Constants.EAST_MOVEMENT
-	
-	if not _is_in_boundaries(next_position):
-		return false
-	
-	current_position = next_position
-	
-	return true
+	return _execute_move(current_room + Constants.EAST_MOVEMENT)
 
 func _west() -> bool:
-	var next_position = current_position + Constants.WEST_MOVEMENT
-	
-	if not _is_in_boundaries(next_position):
-		return false
-	
-	current_position = next_position
-	
-	return true
+	return _execute_move(current_room + Constants.WEST_MOVEMENT)
 
 func _north() -> bool:
-	var next_position = current_position + Constants.NORTH_MOVEMENT
-	
-	if not _is_in_boundaries(next_position):
-		return false
-	
-	current_position = next_position
-	
-	return true
+	return _execute_move(current_room + Constants.NORTH_MOVEMENT)
 
 func _south() -> bool:
-	var next_position = current_position + Constants.SOUTH_MOVEMENT
-	
-	if not _is_in_boundaries(next_position):
-		return false
-	
-	current_position = next_position
-	
-	return true
+	return _execute_move(current_room + Constants.SOUTH_MOVEMENT)
 
 func _disarm() -> bool:
+	for possible_move in Constants.ADJACENT_ROOMS:
+		var next_room := current_room + possible_move
+		
+		if _is_in_boundaries(next_room) and _room_value(next_room) == Constants.ROOM_TRAP:
+			dungeon[next_room.x][next_room.y] = Constants.ROOM_EMPTY
+			dungeon_changed.emit(next_room, Constants.ROOM_EMPTY)
+		
 	return true
 	
 func _scan() -> bool:
+	var found_items: Dictionary[StringName, int] = {}
+	
+	for possible_move in Constants.ADJACENT_ROOMS:
+		var next_room := current_room + possible_move
+		
+		if _is_in_boundaries(next_room):
+			var room_value := _room_value(next_room)
+			if Constants.SCANNEABLE_ITEMS.has(room_value):
+				if room_value in found_items.keys(): 
+					found_items[room_value] += 1
+				else: 
+					found_items[room_value] = 1
+
+	scan_completed.emit(found_items)
 	return true
 	
 func _totem() -> bool:
+	if totems_remaining == 0:
+		return false
+	
+	starting_room = current_room
+	totems_remaining -= 1
+	current_room_content = Constants.ROOM_TOTEM
+	
 	return true
 	
 func _attack() -> bool:
+	if current_room_content == Constants.ROOM_MONSTER:
+		current_room_content = Constants.ROOM_EMPTY
+	
 	return true
 #endregion

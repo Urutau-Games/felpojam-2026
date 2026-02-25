@@ -21,6 +21,7 @@
 [ext_resource type="Resource" uid="uid://b4dca3b4rl2hu" path="res://resources/stamp_data/objects/scan.tres" id="16_knlj8"]
 [ext_resource type="Resource" uid="uid://b0c1y874hs4lm" path="res://resources/stamp_data/objects/attack.tres" id="18_j8ryy"]
 [ext_resource type="Resource" uid="uid://ciho53kie5t0f" path="res://resources/stamp_data/objects/disarm_trap.tres" id="20_aurwj"]
+[ext_resource type="PackedScene" uid="uid://dg2swxax78052" path="res://objects/support/debug_layer/debug_layer.tscn" id="22_crvft"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_o6cfa"]
 allow_unpress = true
@@ -33,6 +34,9 @@ size = Vector2(192, 64)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_fdkoj"]
 size = Vector2(128, 64)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_crvft"]
+bg_color = Color(0.46666667, 0.6509804, 0.5372549, 0.9137255)
 
 [node name="PlayerBoard" type="Control" unique_id=991625787]
 layout_mode = 3
@@ -553,5 +557,39 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "0"
 
+[node name="DebugLayer" parent="." unique_id=929134522 instance=ExtResource("22_crvft")]
+layer = 999
+
+[node name="CongratsLayer" type="CanvasLayer" parent="." unique_id=1927912857]
+unique_name_in_owner = true
+layer = 9999
+visible = false
+
+[node name="PanelContainer" type="PanelContainer" parent="CongratsLayer" unique_id=1992364876]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_crvft")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CongratsLayer/PanelContainer" unique_id=46409625]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="CongratsLayer/PanelContainer/VBoxContainer" unique_id=156191029]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0.29495418, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 80
+text = "PARABÉNS!"
+
+[node name="Button" type="Button" parent="CongratsLayer/PanelContainer/VBoxContainer" unique_id=1147021374]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "REINICIAR"
+
 [connection signal="pressed" from="MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/HBoxContainer/CleanButton" to="." method="_on_clean_button_pressed"]
 [connection signal="pressed" from="MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/HBoxContainer/SendButton" to="." method="_on_send_button_pressed"]
+[connection signal="pressed" from="CongratsLayer/PanelContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
