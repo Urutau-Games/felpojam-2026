@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://doer4mb2oveya"]
+
+[ext_resource type="Script" uid="uid://f75x6p1gt1cc" path="res://objects/dungeon_map/dungeon_map.gd" id="1_yyni3"]
+[ext_resource type="PackedScene" uid="uid://dxphui5xo801j" path="res://objects/map_tile/map_tile.tscn" id="2_2hqso"]
+
+[node name="DungeonMap" type="GridContainer" unique_id=1948855900]
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 2
+theme_override_constants/v_separation = 2
+columns = 15
+script = ExtResource("1_yyni3")
+map_tile_scene = ExtResource("2_2hqso")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwgdqwih4t7cq"
-path="res://.godot/imported/destination.png-461e8748def6e9e3162770a0b875089c.ctex"
+uid="uid://4gf0pig8lbr1"
+path="res://.godot/imported/img-grid-icones.png-ff357de0feca2750eb264e7e9bcf81b9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/placeholders/destination.png"
-dest_files=["res://.godot/imported/destination.png-461e8748def6e9e3162770a0b875089c.ctex"]
+source_file="res://assets/tela-comandos/img-grid-icones.png"
+dest_files=["res://.godot/imported/img-grid-icones.png-ff357de0feca2750eb264e7e9bcf81b9.ctex"]
 
 [params]
 

@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://b3l4vklh1yhn2"]
+
+[ext_resource type="Texture2D" uid="uid://4gf0pig8lbr1" path="res://assets/tela-comandos/img-grid-icones.png" id="1_x53u0"]
+
+[resource]
+atlas = ExtResource("1_x53u0")
+region = Rect2(311, 1, 60, 60)

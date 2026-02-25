@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtn35rbtiw0ld"
-path="res://.godot/imported/monster.png-efe30192ee25fb5224a3765b3cf4e995.ctex"
+uid="uid://bl4gvs1qjguif"
+path="res://.godot/imported/bg-background.png-13f3a2920aaa5df933b89ce90dbc9969.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/placeholders/monster.png"
-dest_files=["res://.godot/imported/monster.png-efe30192ee25fb5224a3765b3cf4e995.ctex"]
+source_file="res://assets/tela-comandos/bg-background.png"
+dest_files=["res://.godot/imported/bg-background.png-13f3a2920aaa5df933b89ce90dbc9969.ctex"]
 
 [params]
 

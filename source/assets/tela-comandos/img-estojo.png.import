@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5bk0ho7qgpfh"
-path="res://.godot/imported/trap.png-87d6171cae7af02b331cefade9fd23be.ctex"
+uid="uid://ugj80p4vf5s7"
+path="res://.godot/imported/img-estojo.png-817f5f450359eb7dd2b433e18303996d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/placeholders/trap.png"
-dest_files=["res://.godot/imported/trap.png-87d6171cae7af02b331cefade9fd23be.ctex"]
+source_file="res://assets/tela-comandos/img-estojo.png"
+dest_files=["res://.godot/imported/img-estojo.png-817f5f450359eb7dd2b433e18303996d.ctex"]
 
 [params]
 

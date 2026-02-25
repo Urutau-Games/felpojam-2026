@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://dxphui5xo801j"]
+
+[ext_resource type="Script" uid="uid://b60l8fh5wp7d3" path="res://objects/map_tile/map_tile.gd" id="1_xq43b"]
+[ext_resource type="Texture2D" uid="uid://bckrnq40acxxw" path="res://assets/tela-comandos/texture_resources/hidden_background.tres" id="2_d0kjx"]
+[ext_resource type="Texture2D" uid="uid://bs7cidj8027ql" path="res://assets/tela-comandos/texture_resources/revealed_background.tres" id="2_hm0ja"]
+[ext_resource type="Texture2D" uid="uid://cll7u0mpaqw4" path="res://assets/tela-comandos/texture_resources/monster_icon.tres" id="3_bmbhx"]
+[ext_resource type="Texture2D" uid="uid://ciu7gsngpf5ms" path="res://assets/tela-comandos/texture_resources/starting_point.tres" id="4_gs3y8"]
+[ext_resource type="Texture2D" uid="uid://cf4gschjvjupi" path="res://assets/tela-comandos/texture_resources/exit_background.tres" id="5_7088f"]
+[ext_resource type="Texture2D" uid="uid://b3l4vklh1yhn2" path="res://assets/tela-comandos/texture_resources/hole_icon.tres" id="7_r1jn3"]
+[ext_resource type="Texture2D" uid="uid://cjwbfeq4nxt25" path="res://assets/tela-comandos/texture_resources/trap_icon.tres" id="8_av8tc"]
+[ext_resource type="Texture2D" uid="uid://dqj13opmfxgdw" path="res://assets/tela-comandos/texture_resources/exit_icon.tres" id="9_h5fix"]
+
+[node name="MapTile" type="Control" unique_id=1208371292]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_xq43b")
+starting_point_texture = ExtResource("4_gs3y8")
+hidden_backgorund = ExtResource("2_d0kjx")
+revealed_background = ExtResource("2_hm0ja")
+exit_background = ExtResource("5_7088f")
+monster_icon = ExtResource("3_bmbhx")
+hole_icon = ExtResource("7_r1jn3")
+trap_icon = ExtResource("8_av8tc")
+exit_icon = ExtResource("9_h5fix")
+
+[node name="Background" type="TextureRect" parent="." unique_id=273534539]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_hm0ja")
+
+[node name="Icon" type="TextureRect" parent="." unique_id=145445222]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_bmbhx")

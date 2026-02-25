@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://ncgvo6oanv34"]
 
 [ext_resource type="Script" uid="uid://bc5auknhq6000" path="res://screens/player_board/player_board.gd" id="1_xkjum"]
-[ext_resource type="Script" uid="uid://f75x6p1gt1cc" path="res://screens/player_board/dungeon_map.gd" id="2_7ur55"]
-[ext_resource type="Texture2D" uid="uid://bqhrfb3ufeog3" path="res://assets/placeholders/empty.png" id="2_wcut0"]
+[ext_resource type="Texture2D" uid="uid://bl4gvs1qjguif" path="res://assets/tela-comandos/bg-background.png" id="2_fdkoj"]
+[ext_resource type="PackedScene" uid="uid://doer4mb2oveya" path="res://objects/dungeon_map/dungeon_map.tscn" id="3_crvft"]
 [ext_resource type="Script" uid="uid://qqr0vx0x0wtd" path="res://screens/player_board/command_panel.gd" id="3_gmcyl"]
 [ext_resource type="Texture2D" uid="uid://dchbppx8gmr5d" path="res://assets/placeholders/north.png" id="3_x8xys"]
 [ext_resource type="Texture2D" uid="uid://cb5tvjkah05g4" path="res://assets/placeholders/south.png" id="4_ydyaf"]
@@ -47,8 +47,19 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xkjum")
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=91480272]
-layout_mode = 1
+[node name="Background" type="CanvasLayer" parent="." unique_id=2101779868]
+
+[node name="TextureRect" type="TextureRect" parent="Background" unique_id=750203413]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_fdkoj")
+
+[node name="Game" type="CanvasLayer" parent="." unique_id=886106435]
+
+[node name="MarginContainer" type="MarginContainer" parent="Game" unique_id=91480272]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -56,10 +67,10 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"FullMarginContainer"
 
-[node name="Control" type="Control" parent="MarginContainer" unique_id=156049953]
+[node name="Control" type="Control" parent="Game/MarginContainer" unique_id=156049953]
 layout_mode = 2
 
-[node name="HBoxContainer" type="VBoxContainer" parent="MarginContainer/Control" unique_id=1834168952]
+[node name="HBoxContainer" type="VBoxContainer" parent="Game/MarginContainer/Control" unique_id=1834168952]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -68,362 +79,59 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
 
-[node name="DungeonMap" type="GridContainer" parent="MarginContainer/Control/HBoxContainer" unique_id=861569102]
+[node name="DungeonMap" parent="Game/MarginContainer/Control/HBoxContainer" unique_id=1948855900 instance=ExtResource("3_crvft")]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-columns = 15
-script = ExtResource("2_7ur55")
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=1215443877]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=922302816]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect3" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=2002593042]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect4" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=1721330991]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect5" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=797021075]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect6" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=2095012341]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect7" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=164811812]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect8" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=838142588]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect9" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=1694180724]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect10" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=312631991]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect11" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=839783470]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect12" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=1408068219]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect13" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=232553209]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect14" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=821611488]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect15" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=1367013027]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect16" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=2019143398]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect17" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=738868495]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect18" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=1596798066]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect19" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=511957817]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect20" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=1851717457]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect21" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=1146752611]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect22" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=162023160]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect23" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=1170363891]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect24" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=1477850061]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect25" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=1995180121]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect26" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=878866394]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect27" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=536227842]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect28" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=697596849]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect29" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=133202350]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect30" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=1112741124]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect31" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=916945150]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect32" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=2031820165]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect33" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=1242654804]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect34" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=1619229922]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect35" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=303903682]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect36" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=1479416439]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect37" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=1705714389]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect38" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=782534270]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect39" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=1487297956]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect40" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=333281653]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect41" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=1943552843]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect42" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=1471663491]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect43" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=263532807]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect44" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=631300169]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect45" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=1590381297]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect46" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=1357943915]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect47" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=1236710568]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect48" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=327119388]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect49" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=282680199]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect50" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=1192599595]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect51" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=1866164821]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect52" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=1663393767]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect53" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=60616988]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect54" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=1896079808]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect55" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=40052813]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect56" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=1774710784]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect57" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=414686680]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect58" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=2137789031]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect59" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=576817205]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect60" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=219587035]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect61" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=118723402]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect62" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=937505864]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect63" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=2084071617]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect64" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=4807111]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect65" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=957868761]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect66" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=285077542]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect67" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=221571117]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect68" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=291064792]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect69" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=352092914]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect70" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=1575084719]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect71" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=513411127]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect72" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=667568794]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect73" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=1000251117]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect74" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=1657791073]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="TextureRect75" type="TextureRect" parent="MarginContainer/Control/HBoxContainer/DungeonMap" unique_id=1517141978]
-layout_mode = 2
-texture = ExtResource("2_wcut0")
-
-[node name="Panel" type="PanelContainer" parent="MarginContainer/Control/HBoxContainer" unique_id=19030906]
+[node name="Panel" type="PanelContainer" parent="Game/MarginContainer/Control/HBoxContainer" unique_id=19030906]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Control/HBoxContainer/Panel" unique_id=2014596826]
+[node name="VBoxContainer" type="VBoxContainer" parent="Game/MarginContainer/Control/HBoxContainer/Panel" unique_id=2014596826]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/Control/HBoxContainer/Panel/VBoxContainer" unique_id=1086008055]
+[node name="Label" type="Label" parent="Game/MarginContainer/Control/HBoxContainer/Panel/VBoxContainer" unique_id=1086008055]
 layout_mode = 2
 text = "COMANDOS"
 
-[node name="CommandPanel" type="PanelContainer" parent="MarginContainer/Control/HBoxContainer/Panel/VBoxContainer" unique_id=1025934672]
+[node name="CommandPanel" type="PanelContainer" parent="Game/MarginContainer/Control/HBoxContainer/Panel/VBoxContainer" unique_id=1025934672]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(650, 64)
 layout_mode = 2
 script = ExtResource("3_gmcyl")
 
-[node name="CommandGrid" type="GridContainer" parent="MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/CommandPanel" unique_id=517676150]
+[node name="CommandGrid" type="GridContainer" parent="Game/MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/CommandPanel" unique_id=517676150]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 columns = 10
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Control/HBoxContainer/Panel/VBoxContainer" unique_id=359520924]
+[node name="HBoxContainer" type="HBoxContainer" parent="Game/MarginContainer/Control/HBoxContainer/Panel/VBoxContainer" unique_id=359520924]
 layout_mode = 2
 size_flags_horizontal = 8
 
-[node name="CleanButton" type="Button" parent="MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/HBoxContainer" unique_id=2073272050]
+[node name="CleanButton" type="Button" parent="Game/MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/HBoxContainer" unique_id=2073272050]
 layout_mode = 2
 size_flags_horizontal = 8
 text = "Limpar"
 
-[node name="SendButton" type="Button" parent="MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/HBoxContainer" unique_id=1806366802]
+[node name="SendButton" type="Button" parent="Game/MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/HBoxContainer" unique_id=1806366802]
 layout_mode = 2
 size_flags_horizontal = 8
 text = "Enviar"
 
-[node name="Panel" type="PanelContainer" parent="MarginContainer/Control/HBoxContainer/Panel/VBoxContainer" unique_id=833747445]
+[node name="Panel" type="PanelContainer" parent="Game/MarginContainer/Control/HBoxContainer/Panel/VBoxContainer" unique_id=833747445]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/Panel" unique_id=713296039]
+[node name="VBoxContainer" type="VBoxContainer" parent="Game/MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/Panel" unique_id=713296039]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/Panel/VBoxContainer" unique_id=1384687353]
+[node name="HBoxContainer" type="HBoxContainer" parent="Game/MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/Panel/VBoxContainer" unique_id=1384687353]
 layout_mode = 2
 
-[node name="NorthButton" type="TextureButton" parent="MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/Panel/VBoxContainer/HBoxContainer" unique_id=970266353 groups=["stamp_button"]]
+[node name="NorthButton" type="TextureButton" parent="Game/MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/Panel/VBoxContainer/HBoxContainer" unique_id=970266353 groups=["stamp_button"]]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
@@ -434,7 +142,7 @@ texture_pressed = SubResource("PlaceholderTexture2D_7ur55")
 script = ExtResource("5_o6cfa")
 stamp_data = ExtResource("6_m1ej2")
 
-[node name="SouthButton" type="TextureButton" parent="MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/Panel/VBoxContainer/HBoxContainer" unique_id=76572686 groups=["stamp_button"]]
+[node name="SouthButton" type="TextureButton" parent="Game/MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/Panel/VBoxContainer/HBoxContainer" unique_id=76572686 groups=["stamp_button"]]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
@@ -445,7 +153,7 @@ texture_pressed = SubResource("PlaceholderTexture2D_7ur55")
 script = ExtResource("5_o6cfa")
 stamp_data = ExtResource("8_7ur55")
 
-[node name="EastButton" type="TextureButton" parent="MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/Panel/VBoxContainer/HBoxContainer" unique_id=1033721152 groups=["stamp_button"]]
+[node name="EastButton" type="TextureButton" parent="Game/MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/Panel/VBoxContainer/HBoxContainer" unique_id=1033721152 groups=["stamp_button"]]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
@@ -456,7 +164,7 @@ texture_pressed = SubResource("PlaceholderTexture2D_7ur55")
 script = ExtResource("5_o6cfa")
 stamp_data = ExtResource("10_crvft")
 
-[node name="WestButton" type="TextureButton" parent="MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/Panel/VBoxContainer/HBoxContainer" unique_id=1683703235 groups=["stamp_button"]]
+[node name="WestButton" type="TextureButton" parent="Game/MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/Panel/VBoxContainer/HBoxContainer" unique_id=1683703235 groups=["stamp_button"]]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
@@ -467,10 +175,10 @@ texture_pressed = SubResource("PlaceholderTexture2D_7ur55")
 script = ExtResource("5_o6cfa")
 stamp_data = ExtResource("12_fdkoj")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/Panel/VBoxContainer" unique_id=214259151]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Game/MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/Panel/VBoxContainer" unique_id=214259151]
 layout_mode = 2
 
-[node name="PlaceTotemButton" type="TextureButton" parent="MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/Panel/VBoxContainer/HBoxContainer2" unique_id=1860785277 groups=["stamp_button"]]
+[node name="PlaceTotemButton" type="TextureButton" parent="Game/MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/Panel/VBoxContainer/HBoxContainer2" unique_id=1860785277 groups=["stamp_button"]]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
@@ -481,7 +189,7 @@ texture_pressed = SubResource("PlaceholderTexture2D_7ur55")
 script = ExtResource("5_o6cfa")
 stamp_data = ExtResource("14_vt3b7")
 
-[node name="ScanButton" type="TextureButton" parent="MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/Panel/VBoxContainer/HBoxContainer2" unique_id=1536446163 groups=["stamp_button"]]
+[node name="ScanButton" type="TextureButton" parent="Game/MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/Panel/VBoxContainer/HBoxContainer2" unique_id=1536446163 groups=["stamp_button"]]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
@@ -492,10 +200,10 @@ texture_pressed = SubResource("PlaceholderTexture2D_crvft")
 script = ExtResource("5_o6cfa")
 stamp_data = ExtResource("16_knlj8")
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/Panel/VBoxContainer" unique_id=444871450]
+[node name="HBoxContainer3" type="HBoxContainer" parent="Game/MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/Panel/VBoxContainer" unique_id=444871450]
 layout_mode = 2
 
-[node name="AttackButton" type="TextureButton" parent="MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/Panel/VBoxContainer/HBoxContainer3" unique_id=1129333375 groups=["stamp_button"]]
+[node name="AttackButton" type="TextureButton" parent="Game/MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/Panel/VBoxContainer/HBoxContainer3" unique_id=1129333375 groups=["stamp_button"]]
 unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
@@ -505,7 +213,7 @@ texture_pressed = SubResource("PlaceholderTexture2D_fdkoj")
 script = ExtResource("5_o6cfa")
 stamp_data = ExtResource("18_j8ryy")
 
-[node name="DisarmTrapButton" type="TextureButton" parent="MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/Panel/VBoxContainer/HBoxContainer3" unique_id=1479233352 groups=["stamp_button"]]
+[node name="DisarmTrapButton" type="TextureButton" parent="Game/MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/Panel/VBoxContainer/HBoxContainer3" unique_id=1479233352 groups=["stamp_button"]]
 unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
@@ -515,57 +223,57 @@ texture_pressed = SubResource("PlaceholderTexture2D_fdkoj")
 script = ExtResource("5_o6cfa")
 stamp_data = ExtResource("20_aurwj")
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/Control/HBoxContainer/Panel/VBoxContainer" unique_id=1562156534]
+[node name="PanelContainer" type="PanelContainer" parent="Game/MarginContainer/Control/HBoxContainer/Panel/VBoxContainer" unique_id=1562156534]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/PanelContainer" unique_id=1747943703]
+[node name="VBoxContainer" type="VBoxContainer" parent="Game/MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/PanelContainer" unique_id=1747943703]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/PanelContainer/VBoxContainer" unique_id=13713384]
+[node name="HBoxContainer" type="HBoxContainer" parent="Game/MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/PanelContainer/VBoxContainer" unique_id=13713384]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=608912325]
+[node name="Label" type="Label" parent="Game/MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=608912325]
 layout_mode = 2
 text = "Constructos enviados: "
 
-[node name="ConstructsSentLabel" type="Label" parent="MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=50554242]
+[node name="ConstructsSentLabel" type="Label" parent="Game/MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=50554242]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/PanelContainer/VBoxContainer" unique_id=1807413480]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Game/MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/PanelContainer/VBoxContainer" unique_id=1807413480]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2" unique_id=1005577549]
+[node name="Label" type="Label" parent="Game/MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2" unique_id=1005577549]
 layout_mode = 2
 text = "Totens restantes: "
 
-[node name="RemainingTotems" type="Label" parent="MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2" unique_id=1041133434]
+[node name="RemainingTotems" type="Label" parent="Game/MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2" unique_id=1041133434]
 unique_name_in_owner = true
 layout_mode = 2
 text = "3"
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/PanelContainer/VBoxContainer" unique_id=192922090]
+[node name="HBoxContainer3" type="HBoxContainer" parent="Game/MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/PanelContainer/VBoxContainer" unique_id=192922090]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer3" unique_id=1932598632]
+[node name="Label" type="Label" parent="Game/MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer3" unique_id=1932598632]
 layout_mode = 2
 text = "Dungeons concluídas: "
 
-[node name="FinishedDugeonsLabel" type="Label" parent="MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer3" unique_id=999005623]
+[node name="FinishedDugeonsLabel" type="Label" parent="Game/MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer3" unique_id=999005623]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
 
-[node name="DebugLayer" parent="." unique_id=929134522 instance=ExtResource("22_crvft")]
+[node name="Debug" parent="." unique_id=929134522 instance=ExtResource("22_crvft")]
 layer = 999
 
-[node name="CongratsLayer" type="CanvasLayer" parent="." unique_id=1927912857]
+[node name="Congrats" type="CanvasLayer" parent="." unique_id=1927912857]
 unique_name_in_owner = true
 layer = 9999
 visible = false
 
-[node name="PanelContainer" type="PanelContainer" parent="CongratsLayer" unique_id=1992364876]
+[node name="PanelContainer" type="PanelContainer" parent="Congrats" unique_id=1992364876]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -573,23 +281,23 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_crvft")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CongratsLayer/PanelContainer" unique_id=46409625]
+[node name="VBoxContainer" type="VBoxContainer" parent="Congrats/PanelContainer" unique_id=46409625]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Label" type="Label" parent="CongratsLayer/PanelContainer/VBoxContainer" unique_id=156191029]
+[node name="Label" type="Label" parent="Congrats/PanelContainer/VBoxContainer" unique_id=156191029]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0.29495418, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 80
 text = "PARABÉNS!"
 
-[node name="Button" type="Button" parent="CongratsLayer/PanelContainer/VBoxContainer" unique_id=1147021374]
+[node name="Button" type="Button" parent="Congrats/PanelContainer/VBoxContainer" unique_id=1147021374]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "REINICIAR"
 
-[connection signal="pressed" from="MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/HBoxContainer/CleanButton" to="." method="_on_clean_button_pressed"]
-[connection signal="pressed" from="MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/HBoxContainer/SendButton" to="." method="_on_send_button_pressed"]
-[connection signal="pressed" from="CongratsLayer/PanelContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Game/MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/HBoxContainer/CleanButton" to="." method="_on_clean_button_pressed"]
+[connection signal="pressed" from="Game/MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/HBoxContainer/SendButton" to="." method="_on_send_button_pressed"]
+[connection signal="pressed" from="Congrats/PanelContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

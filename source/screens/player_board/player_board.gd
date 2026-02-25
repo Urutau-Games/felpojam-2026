@@ -1,11 +1,11 @@
 extends Control
 
 @onready var dungeon_map: GridContainer = %DungeonMap
-@onready var command_panel: PanelContainer = $MarginContainer/Control/HBoxContainer/Panel/VBoxContainer/CommandPanel
+@onready var command_panel: PanelContainer = %CommandPanel
 
 @onready var constructs_sent_label: Label = %ConstructsSentLabel
 @onready var remaining_totems: Label = %RemainingTotems
-@onready var congrats_layer: CanvasLayer = %CongratsLayer
+@onready var congrats_layer: CanvasLayer = %Congrats
 
 func _ready() -> void:
 	GameManager.target_reached.connect(_on_target_reached)
