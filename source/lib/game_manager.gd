@@ -13,6 +13,9 @@ signal scan_completed(items: Dictionary[StringName, int])
 
 signal target_reached()
 
+signal execution_started()
+signal execution_finished()
+
 var active_stamp: StampData
 var current_room: Vector2i
 var starting_room: Vector2i
@@ -79,6 +82,8 @@ func execute(commands: Array[String]) -> void:
 	var previous_position := current_room
 	var command_index = 0
 	
+	execution_started.emit()
+	
 	for command in commands:
 		command_started.emit(command_index)
 		
@@ -105,7 +110,9 @@ func execute(commands: Array[String]) -> void:
 		
 			command_finished.emit(command_index)
 			command_index += 1
-			
+
+	execution_finished.emit()
+
 	if command_index == commands.size():
 		current_room = starting_room
 

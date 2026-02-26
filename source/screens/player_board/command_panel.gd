@@ -6,6 +6,9 @@ extends Control
 var _used_slots: int = 0
 var _commands: Array[String] = []
 
+const GAMEPLAY_HEIGHT: float = 724
+const INSERT_HEIGHT: float = 850
+
 var remaining_slots: int:
 	get:
 		return Constants.MAX_COMMANDS - _used_slots
@@ -14,6 +17,8 @@ func _ready() -> void:
 	GameManager.command_started.connect(_modulate_command.bind(Color.LAWN_GREEN))
 	GameManager.command_failed.connect(_modulate_command.bind(Color.INDIAN_RED))
 	GameManager.command_finished.connect(_modulate_command.bind(Color.WHITE))
+	
+	GameManager.execution_finished.connect(_on_execution_finished)
 
 func _gui_input(event: InputEvent) -> void:
 	if not event is InputEventMouse:
@@ -44,7 +49,19 @@ func clear() -> void:
 		c.queue_free()
 
 func send() -> void:
-	GameManager.execute(_commands)
+	_insert().tween_callback(GameManager.execute.bind(_commands))
+
+func _insert() -> Tween:
+	var tween := get_tree().create_tween().set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(self, 'position:y', INSERT_HEIGHT, 0.2)
+	return tween
+
+func _eject() -> void:
+	var tween := get_tree().create_tween().set_ease(Tween.EASE_OUT_IN)
+	tween.tween_property(self, 'position:y', GAMEPLAY_HEIGHT, 0.2)
+
+func _on_execution_finished() -> void:
+	_eject()
 
 func _modulate_command(command_index: int, color: Color) -> void:
 	var tile = command_grid.get_child(command_index) as TextureRect
