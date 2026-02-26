@@ -6,8 +6,8 @@
 
 Botão expansível
 - margem pro externo
--- altura 16
--- largura 12
+-- altura 26
+-- largura 20
 
 -quadro interno
 -- altura 80
