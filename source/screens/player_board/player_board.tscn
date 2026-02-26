@@ -68,7 +68,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xkjum")
 stamp_button_group = ExtResource("5_a7888")
-metadata/_edit_vertical_guides_ = [1963.0]
 
 [node name="Background" type="CanvasLayer" parent="." unique_id=2101779868]
 
@@ -312,6 +311,7 @@ theme_type_variation = &"NotesLabel"
 text = "3"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="Game/MarginContainer/Control/Panel/VBoxContainer2" unique_id=192922090]
+visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="Game/MarginContainer/Control/Panel/VBoxContainer2/HBoxContainer3" unique_id=1932598632]

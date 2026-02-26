@@ -11,9 +11,14 @@ extends Control
 @export var stamp_button_group: ButtonGroup
 
 func _ready() -> void:
+	MusicPlayer.play_planning_phase()
+	
 	GameManager.target_reached.connect(_on_target_reached)
 	GameManager.stamp_picked.connect(_on_stamp_picked)
 	GameManager.stamp_dropped.connect(_on_stamp_dropped)
+	
+	GameManager.execution_started.connect(_on_execution_started)
+	GameManager.execution_finished.connect(_on_execution_finished)
 
 func _on_clean_button_pressed() -> void:
 	command_panel.clear()
@@ -50,3 +55,9 @@ func _on_target_reached() -> void:
 
 func _on_button_pressed() -> void:
 	get_tree().reload_current_scene()
+
+func _on_execution_started() -> void:
+	MusicPlayer.play_action()
+	
+func _on_execution_finished() -> void:
+	MusicPlayer.play_planning_phase()

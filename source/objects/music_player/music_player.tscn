@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dhsisp2s0hx3v"]
+
+[ext_resource type="Script" uid="uid://dmelapg3muqt1" path="res://objects/music_player/music_player.gd" id="1_kuot6"]
+[ext_resource type="AudioStream" uid="uid://cppuk6pwqkhv6" path="res://assets/audio/songs/412048__shortiefoeva2__making-up-soft-hip-hop.mp3" id="2_fmyae"]
+[ext_resource type="AudioStream" uid="uid://byuchcd4lt1nh" path="res://assets/audio/songs/172707__axtoncrolley__nodens-field-song.mp3" id="3_qes4x"]
+[ext_resource type="AudioStream" uid="uid://cavb602gliwv6" path="res://assets/audio/songs/157846__darkmast49__fightscene.mp3" id="4_xxc8b"]
+
+[node name="MusicPlayer" type="AudioStreamPlayer" unique_id=77250248]
+bus = &"Music"
+script = ExtResource("1_kuot6")
+planning_phase_music = ExtResource("2_fmyae")
+menu_music = ExtResource("3_qes4x")
+action_phase_music = ExtResource("4_xxc8b")
