@@ -1,11 +1,13 @@
 [gd_resource type="Resource" script_class="StampData" format=3 uid="uid://b4dca3b4rl2hu"]
 
 [ext_resource type="Script" uid="uid://dc1rxrgqxyafw" path="res://resources/stamp_data/stamp_data.gd" id="1_3jlmb"]
-[ext_resource type="Texture2D" uid="uid://c8v6mfd6b1i8d" path="res://assets/placeholders/scan.png" id="2_hrytd"]
+[ext_resource type="Texture2D" uid="uid://cwt1lgg3brx2a" path="res://assets/tela-comandos/stamp_resources/scan_stamp_normal.tres" id="2_s05vq"]
+[ext_resource type="Texture2D" uid="uid://h8dnsvec5gfe" path="res://assets/tela-comandos/stamp_resources/scan_stamp_figure.tres" id="3_p4dh5"]
 
 [resource]
 script = ExtResource("1_3jlmb")
 command = &"scan"
 command_size = 3
-stamp_texture = ExtResource("2_hrytd")
+stamp_texture = ExtResource("3_p4dh5")
+stamp_cursor = ExtResource("2_s05vq")
 metadata/_custom_type_script = "uid://dc1rxrgqxyafw"

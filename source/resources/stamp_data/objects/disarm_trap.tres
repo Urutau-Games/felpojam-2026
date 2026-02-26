@@ -1,11 +1,13 @@
 [gd_resource type="Resource" script_class="StampData" format=3 uid="uid://ciho53kie5t0f"]
 
 [ext_resource type="Script" uid="uid://dc1rxrgqxyafw" path="res://resources/stamp_data/stamp_data.gd" id="1_pnk0d"]
-[ext_resource type="Texture2D" uid="uid://dywbr3bprb1rg" path="res://assets/placeholders/disable_trap.png" id="2_aiu8u"]
+[ext_resource type="Texture2D" uid="uid://vdepvsthm3wd" path="res://assets/tela-comandos/stamp_resources/disarm_stamp_normal.tres" id="2_ynux7"]
+[ext_resource type="Texture2D" uid="uid://cohhgnbgdb2s" path="res://assets/tela-comandos/stamp_resources/disarm_stamp_figure.tres" id="3_1b1rw"]
 
 [resource]
 script = ExtResource("1_pnk0d")
 command = &"disarm"
 command_size = 2
-stamp_texture = ExtResource("2_aiu8u")
+stamp_texture = ExtResource("3_1b1rw")
+stamp_cursor = ExtResource("2_ynux7")
 metadata/_custom_type_script = "uid://dc1rxrgqxyafw"

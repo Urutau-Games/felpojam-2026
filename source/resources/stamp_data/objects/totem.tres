@@ -1,10 +1,12 @@
 [gd_resource type="Resource" script_class="StampData" format=3 uid="uid://b5t54pv7m1nwq"]
 
 [ext_resource type="Script" uid="uid://dc1rxrgqxyafw" path="res://resources/stamp_data/stamp_data.gd" id="1_6wlu8"]
-[ext_resource type="Texture2D" uid="uid://dpjmg2744iiww" path="res://assets/placeholders/place_totem.png" id="2_spw6f"]
+[ext_resource type="Texture2D" uid="uid://buenvx0iho82s" path="res://assets/tela-comandos/stamp_resources/totem_stamp_normal.tres" id="2_8tqgv"]
+[ext_resource type="Texture2D" uid="uid://bauwamvjquegs" path="res://assets/tela-comandos/stamp_resources/totem_stamp_figure.tres" id="3_kddx1"]
 
 [resource]
 script = ExtResource("1_6wlu8")
 command = &"totem"
-stamp_texture = ExtResource("2_spw6f")
+stamp_texture = ExtResource("3_kddx1")
+stamp_cursor = ExtResource("2_8tqgv")
 metadata/_custom_type_script = "uid://dc1rxrgqxyafw"

@@ -1,8 +1,10 @@
 [gd_resource type="Theme" format=3 uid="uid://csbxthunacufw"]
 
+[ext_resource type="FontFile" uid="uid://db3ceaayykp15" path="res://assets/fonts/halogen/Halogen.otf" id="1_xgdp2"]
+
 [resource]
-FullMarginContainer/base_type = &"MarginContainer"
-FullMarginContainer/constants/margin_bottom = 50
-FullMarginContainer/constants/margin_left = 50
-FullMarginContainer/constants/margin_right = 50
-FullMarginContainer/constants/margin_top = 50
+default_font = ExtResource("1_xgdp2")
+NotesLabel/base_type = &"Label"
+NotesLabel/colors/font_color = Color(0.30588236, 0.16470589, 0.11764706, 1)
+NotesLabel/font_sizes/font_size = 20
+TitleScreenButton/base_type = &"Button"

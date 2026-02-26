@@ -13,6 +13,12 @@ signal scan_completed(items: Dictionary[StringName, int])
 
 signal target_reached()
 
+signal execution_started()
+signal execution_finished()
+
+signal stamp_picked(stamp: StampData)
+signal stamp_dropped(is_release: bool)
+
 var active_stamp: StampData
 var current_room: Vector2i
 var starting_room: Vector2i
@@ -65,19 +71,24 @@ func _ready() -> void:
 			
 		dungeon.push_back(line.split())
 
-func drop_stamp() -> void:
-	Input.set_custom_mouse_cursor(null)
+func release_stamp() -> void:
 	active_stamp = null
-	get_tree().call_group(&"stamp_button", "set_pressed_no_signal", false)
+	stamp_dropped.emit(true)
 
-func hold_stamp(stamp: StampData, hotspot: Vector2) -> void:
-	Input.set_custom_mouse_cursor(stamp.stamp_texture, Input.CURSOR_ARROW, hotspot)
+func drop_stamp() -> void:
+	active_stamp = null
+	stamp_dropped.emit(false)
+
+func hold_stamp(stamp: StampData) -> void:
 	active_stamp = stamp
+	stamp_picked.emit(stamp)
 
 func execute(commands: Array[String]) -> void:
 	used_constructs += 1
 	var previous_position := current_room
 	var command_index = 0
+	
+	execution_started.emit()
 	
 	for command in commands:
 		command_started.emit(command_index)
@@ -105,7 +116,9 @@ func execute(commands: Array[String]) -> void:
 		
 			command_finished.emit(command_index)
 			command_index += 1
-			
+
+	execution_finished.emit()
+
 	if command_index == commands.size():
 		current_room = starting_room
 
