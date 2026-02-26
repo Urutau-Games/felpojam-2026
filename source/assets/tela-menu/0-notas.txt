@@ -1,0 +1,35 @@
+- marrom
+#33110c
+
+- branco
+#eed7d0
+
+Botão expansível
+- margem pro externo
+-- altura 16
+-- largura 12
+
+-quadro interno
+-- altura 80
+-- largura 219
+
+Botão JOGAR e SAIR (à direita)
+- margens entre borda da tela
+-- altura 420
+-- largura 995
+-- distância entre eles 50
+
+- altura 111px
+- largura 245px
+
+
+Botões misc (à esquerda)
+- margens entre borda da tela
+-- altura 400
+-- largura 630
+-- distância entre eles 15
+
+- altura 90px
+- largura 245px
+
+
