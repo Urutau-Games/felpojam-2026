@@ -71,7 +71,7 @@ func drop_stamp() -> void:
 	get_tree().call_group(&"stamp_button", "set_pressed_no_signal", false)
 
 func hold_stamp(stamp: StampData, hotspot: Vector2) -> void:
-	Input.set_custom_mouse_cursor(stamp.stamp_texture, Input.CURSOR_ARROW, hotspot)
+	Input.set_custom_mouse_cursor(stamp.stamp_cursor, Input.CURSOR_ARROW, hotspot)
 	active_stamp = stamp
 
 func execute(commands: Array[String]) -> void:

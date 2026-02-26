@@ -9,7 +9,12 @@ func _ready() -> void:
 	GameManager.dungeon_changed.connect(_on_dungeon_changed)
 	GameManager.construct_moved.connect(_on_construct_moved)
 	
+	_clean_placeholders()
 	_initialize_map()
+
+func _clean_placeholders() -> void:
+	for placeholder in get_children():
+		placeholder.queue_free()
 
 func _initialize_map() -> void:
 	for row in Constants.DUNGEON_HEIGHT:

@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://c411bg35h1hbg"]
+
+[ext_resource type="Texture2D" uid="uid://dkmm1j4r1bdl3" path="res://assets/tela-comandos/obj-carimbos-atlas.png" id="1_npjic"]
+
+[resource]
+atlas = ExtResource("1_npjic")
+region = Rect2(5, 4, 117, 117)
