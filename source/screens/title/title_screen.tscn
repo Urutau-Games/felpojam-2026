@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://didjfi4wjm87h"]
 
 [ext_resource type="Script" uid="uid://cugmea7otbvp1" path="res://screens/title/title_screen.gd" id="1_a0lyr"]
+[ext_resource type="Texture2D" uid="uid://demx0ps3s7oc0" path="res://assets/tela-menu/bg-background.png" id="2_pefg2"]
 
 [node name="TitleScreen" type="Control" unique_id=1169439539]
 layout_mode = 3
@@ -11,35 +12,65 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_a0lyr")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1638323111]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1940515111]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_pefg2")
 
-[node name="Play" type="Button" parent="VBoxContainer" unique_id=87206813]
+[node name="PlayAndExit" type="VBoxContainer" parent="." unique_id=1638323111]
+layout_mode = 0
+offset_left = 995.0
+offset_top = 420.0
+offset_right = 1039.0
+offset_bottom = 472.0
+theme_override_constants/separation = 50
+
+[node name="Play" type="Button" parent="PlayAndExit" unique_id=87206813]
+custom_minimum_size = Vector2(245, 111)
 layout_mode = 2
+theme_type_variation = &"GreenButton"
+theme_override_font_sizes/font_size = 48
 text = "Jogar"
 
-[node name="HowToPlay" type="Button" parent="VBoxContainer" unique_id=601510062]
+[node name="Exit" type="Button" parent="PlayAndExit" unique_id=1458782358]
+custom_minimum_size = Vector2(245, 111)
 layout_mode = 2
-text = "Como Jogar"
-
-[node name="Options" type="Button" parent="VBoxContainer" unique_id=911742888]
-layout_mode = 2
-text = "Opções"
-
-[node name="Credits" type="Button" parent="VBoxContainer" unique_id=1695045701]
-layout_mode = 2
-text = "Créditos"
-
-[node name="Exit" type="Button" parent="VBoxContainer" unique_id=1458782358]
-layout_mode = 2
+theme_type_variation = &"RedButton"
+theme_override_font_sizes/font_size = 48
 text = "Sair"
 
-[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[node name="Others" type="VBoxContainer" parent="." unique_id=51451187]
+layout_mode = 0
+offset_left = 630.0
+offset_top = 400.0
+offset_right = 875.0
+offset_bottom = 678.0
+theme_override_constants/separation = 15
+
+[node name="HowToPlay" type="Button" parent="Others" unique_id=601510062]
+custom_minimum_size = Vector2(245, 90)
+layout_mode = 2
+theme_type_variation = &"GreenButton"
+theme_override_font_sizes/font_size = 32
+text = "Como Jogar"
+
+[node name="Options" type="Button" parent="Others" unique_id=911742888]
+custom_minimum_size = Vector2(245, 90)
+layout_mode = 2
+theme_type_variation = &"GreenButton"
+theme_override_font_sizes/font_size = 32
+text = "Opções"
+
+[node name="Credits" type="Button" parent="Others" unique_id=1695045701]
+custom_minimum_size = Vector2(245, 90)
+layout_mode = 2
+theme_type_variation = &"GreenButton"
+theme_override_font_sizes/font_size = 32
+text = "Créditos"
+
+[connection signal="pressed" from="PlayAndExit/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="PlayAndExit/Exit" to="." method="_on_exit_pressed"]

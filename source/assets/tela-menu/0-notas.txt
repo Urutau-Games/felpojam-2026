@@ -31,5 +31,3 @@ Botões misc (à esquerda)
 
 - altura 90px
 - largura 245px
-
-
