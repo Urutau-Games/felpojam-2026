@@ -31,12 +31,17 @@ func _place_command(stamp_data: StampData) -> void:
 	if _has_space(stamp_data):
 		var tile = TextureRect.new()
 		tile.texture = stamp_data.stamp_texture
+		tile.modulate = Color(Color.WHITE, stamp_data.charge)
 		command_grid.add_child(tile)
+		
+		stamp_data.use()
+		
 		_used_slots += stamp_data.command_size
+		
 		_commands.push_back(stamp_data.command)
 		
 	if not _has_space(stamp_data):
-		GameManager.drop_stamp()
+		GameManager.release_stamp()
 
 func _has_space(stamp_data: StampData) -> bool:
 	return stamp_data and stamp_data.command_size <= remaining_slots

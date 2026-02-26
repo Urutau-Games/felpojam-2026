@@ -27,10 +27,6 @@ window/size/mode=3
 window/stretch/mode="canvas_items"
 window/vsync/vsync_mode=0
 
-[global_group]
-
-stamp_button=""
-
 [gui]
 
 theme/custom="uid://csbxthunacufw"
