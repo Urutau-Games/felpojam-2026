@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="felpojam"
-run/main_scene="uid://ncgvo6oanv34"
+run/main_scene="uid://didjfi4wjm87h"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GameManager="*uid://d2ltm6fxv6lsr"
 MusicPlayer="*uid://dhsisp2s0hx3v"
+SceneManager="*uid://dk0mmlewgnkt6"
 
 [display]
 
