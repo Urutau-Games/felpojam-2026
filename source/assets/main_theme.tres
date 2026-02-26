@@ -1,10 +1,105 @@
 [gd_resource type="Theme" format=3 uid="uid://csbxthunacufw"]
 
+[ext_resource type="Texture2D" uid="uid://ylfnn55cntlg" path="res://assets/tela-menu/obj-botao.png" id="1_d80jv"]
 [ext_resource type="FontFile" uid="uid://db3ceaayykp15" path="res://assets/fonts/halogen/Halogen.otf" id="1_xgdp2"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_d80jv"]
+load_path = "res://.godot/imported/obj-botao.png-792ba4eb818d8fc0fbd0098167acb893.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_611f8"]
+atlas = SubResource("CompressedTexture2D_d80jv")
+region = Rect2(0, 0, 244, 112)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pefyd"]
+texture = SubResource("AtlasTexture_611f8")
+texture_margin_left = 12.0
+texture_margin_top = 16.0
+texture_margin_right = 12.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0arac"]
+atlas = ExtResource("1_d80jv")
+region = Rect2(0, 0, 244, 112)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_611f8"]
+texture = SubResource("AtlasTexture_0arac")
+texture_margin_left = 12.0
+texture_margin_top = 16.0
+texture_margin_right = 12.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0arac"]
+load_path = "res://.godot/imported/obj-botao.png-792ba4eb818d8fc0fbd0098167acb893.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pefyd"]
+atlas = SubResource("CompressedTexture2D_0arac")
+region = Rect2(0, 0, 244, 112)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_upuy7"]
+texture = SubResource("AtlasTexture_pefyd")
+texture_margin_left = 12.0
+texture_margin_top = 16.0
+texture_margin_right = 12.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_611f8"]
+load_path = "res://.godot/imported/obj-botao.png-792ba4eb818d8fc0fbd0098167acb893.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_upuy7"]
+atlas = SubResource("CompressedTexture2D_611f8")
+region = Rect2(258, 0, 245, 112)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2jsj3"]
+texture = SubResource("AtlasTexture_upuy7")
+texture_margin_left = 12.0
+texture_margin_top = 16.0
+texture_margin_right = 12.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2est8"]
+load_path = "res://.godot/imported/obj-botao.png-792ba4eb818d8fc0fbd0098167acb893.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ojh6"]
+atlas = SubResource("CompressedTexture2D_2est8")
+region = Rect2(258, 0, 245, 112)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6f8b1"]
+texture = SubResource("AtlasTexture_7ojh6")
+texture_margin_left = 12.0
+texture_margin_top = 16.0
+texture_margin_right = 12.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pl0ij"]
+load_path = "res://.godot/imported/obj-botao.png-792ba4eb818d8fc0fbd0098167acb893.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfaqg"]
+atlas = SubResource("CompressedTexture2D_pl0ij")
+region = Rect2(258, 0, 245, 112)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yo0da"]
+texture = SubResource("AtlasTexture_mfaqg")
+texture_margin_left = 12.0
+texture_margin_top = 16.0
+texture_margin_right = 12.0
+texture_margin_bottom = 16.0
 
 [resource]
 default_font = ExtResource("1_xgdp2")
+GreenButton/base_type = &"Button"
+GreenButton/colors/font_color = Color(0.2, 0.06666667, 0.047058824, 1)
+GreenButton/colors/font_hover_color = Color(0.93333334, 0.84313726, 0.8156863, 1)
+GreenButton/colors/font_pressed_color = Color(0.93333334, 0.84313726, 0.8156863, 1)
+GreenButton/styles/hover = SubResource("StyleBoxTexture_pefyd")
+GreenButton/styles/normal = SubResource("StyleBoxTexture_611f8")
+GreenButton/styles/pressed = SubResource("StyleBoxTexture_upuy7")
 NotesLabel/base_type = &"Label"
 NotesLabel/colors/font_color = Color(0.30588236, 0.16470589, 0.11764706, 1)
 NotesLabel/font_sizes/font_size = 20
-TitleScreenButton/base_type = &"Button"
+RedButton/base_type = &"Button"
+RedButton/colors/font_color = Color(0.2, 0.06666667, 0.047058824, 1)
+RedButton/colors/font_hover_color = Color(0.93333334, 0.84313726, 0.8156863, 1)
+RedButton/colors/font_pressed_color = Color(0.93333334, 0.84313726, 0.8156863, 1)
+RedButton/styles/hover = SubResource("StyleBoxTexture_2jsj3")
+RedButton/styles/normal = SubResource("StyleBoxTexture_6f8b1")
+RedButton/styles/pressed = SubResource("StyleBoxTexture_yo0da")
