@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://ylfnn55cntlg" path="res://assets/tela-menu/obj-botao.png" id="1_d80jv"]
 [ext_resource type="FontFile" uid="uid://db3ceaayykp15" path="res://assets/fonts/halogen/Halogen.otf" id="1_xgdp2"]
 [ext_resource type="Texture2D" uid="uid://bauwamvjquegs" path="res://assets/tela-comandos/stamp_resources/totem_stamp_figure.tres" id="2_0arac"]
+[ext_resource type="Texture2D" uid="uid://b05blguvm385a" path="res://assets/tela-comandos/papel-notas.png" id="3_611f8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_upuy7"]
 draw_center = false
@@ -66,6 +67,13 @@ content_margin_top = 3.0
 content_margin_bottom = 3.0
 bg_color = Color(0.90588236, 0.83137256, 0.827451, 1)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2est8"]
+texture = ExtResource("3_611f8")
+texture_margin_left = 30.0
+texture_margin_top = 50.0
+texture_margin_right = 35.0
+texture_margin_bottom = 50.0
+
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_611f8"]
 load_path = "res://.godot/imported/obj-botao.png-792ba4eb818d8fc0fbd0098167acb893.ctex"
 
@@ -121,6 +129,8 @@ GreenButton/colors/font_pressed_color = Color(0.93333334, 0.84313726, 0.8156863,
 GreenButton/styles/hover = SubResource("StyleBoxTexture_pefyd")
 GreenButton/styles/normal = SubResource("StyleBoxTexture_611f8")
 GreenButton/styles/pressed = SubResource("StyleBoxTexture_upuy7")
+LogRichLabel/base_type = &"RichTextLabel"
+LogRichLabel/colors/default_color = Color(0.2, 0.06666667, 0.047058824, 1)
 NotesLabel/base_type = &"Label"
 NotesLabel/colors/font_color = Color(0.30588236, 0.16470589, 0.11764706, 1)
 NotesLabel/font_sizes/font_size = 20
@@ -131,6 +141,8 @@ OptionsSlider/icons/grabber_highlight = SubResource("AtlasTexture_pefyd")
 OptionsSlider/styles/grabber_area = SubResource("StyleBoxFlat_0arac")
 OptionsSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_611f8")
 OptionsSlider/styles/slider = SubResource("StyleBoxFlat_pefyd")
+PaperContainer/base_type = &"PanelContainer"
+PaperContainer/styles/panel = SubResource("StyleBoxTexture_2est8")
 RedButton/base_type = &"Button"
 RedButton/colors/font_color = Color(0.2, 0.06666667, 0.047058824, 1)
 RedButton/colors/font_hover_color = Color(0.93333334, 0.84313726, 0.8156863, 1)

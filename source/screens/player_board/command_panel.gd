@@ -1,4 +1,5 @@
 extends Control
+class_name CommandPanel
 
 @onready var command_grid: GridContainer = %CommandGrid
 @onready var place_totem_button: TextureButton = %PlaceTotemButton
@@ -55,6 +56,9 @@ func clear() -> void:
 
 func send() -> void:
 	_insert().tween_callback(GameManager.execute.bind(_commands))
+
+func is_empty() -> bool:
+	return remaining_slots == Constants.MAX_COMMANDS
 
 func _insert() -> Tween:
 	var tween := get_tree().create_tween().set_ease(Tween.EASE_IN_OUT)

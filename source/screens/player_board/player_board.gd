@@ -1,7 +1,11 @@
 extends Control
 
+const CLICK_AMOUNT: int = 40
+const CLICK_PULL_BACK: int = CLICK_AMOUNT - 5
+const CLICK_LOCKED: int = 5
+
 @onready var dungeon_map: GridContainer = %DungeonMap
-@onready var command_panel: PanelContainer = %CommandPanel
+@onready var command_panel: CommandPanel = %CommandPanel
 
 @onready var constructs_sent_label: Label = %ConstructsSentLabel
 @onready var remaining_totems: Label = %RemainingTotems
@@ -9,6 +13,12 @@ extends Control
 @onready var cursor_container: CanvasLayer = %CursorContainer
 
 @export var stamp_button_group: ButtonGroup
+
+@onready var clean_button: TextureButton = %CleanButton
+@onready var send_button: TextureButton = %SendButton
+
+@onready var clean_button_y: float = clean_button.position.y
+@onready var send_button_y: float = send_button.position.y
 
 func _ready() -> void:
 	MusicPlayer.play_planning_phase()
@@ -21,6 +31,10 @@ func _ready() -> void:
 	GameManager.execution_finished.connect(_on_execution_finished)
 
 func _on_clean_button_pressed() -> void:
+	var tween := create_tween().set_ease(Tween.EASE_IN)
+	tween.tween_property(clean_button, 'position:y', clean_button_y + CLICK_PULL_BACK, 0.05)
+	tween.tween_property(clean_button, 'position:y', clean_button_y, 0.05)
+	
 	command_panel.clear()
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -28,7 +42,18 @@ func _unhandled_input(event: InputEvent) -> void:
 		GameManager.release_stamp()
 
 func _on_send_button_pressed() -> void:
-	command_panel.send()
+	if command_panel.is_empty():
+		var tween := create_tween().set_ease(Tween.EASE_IN)
+		tween.tween_property(send_button, 'position:y', send_button_y + CLICK_LOCKED, 0.05)
+		tween.tween_property(send_button, 'position:y', send_button_y, 0.05)
+	else:
+		var tween := create_tween().set_ease(Tween.EASE_IN)
+		tween.tween_property(send_button, 'position:y', send_button_y + CLICK_AMOUNT, 0.05)
+		tween.tween_property(send_button, 'position:y', send_button_y + CLICK_PULL_BACK, 0.05)
+		tween.tween_callback(command_panel.send)
+		
+		send_button.disabled = true
+		
 
 func _on_stamp_picked(stamp: StampData) -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
@@ -58,6 +83,10 @@ func _on_button_pressed() -> void:
 
 func _on_execution_started() -> void:
 	MusicPlayer.play_action()
-	
+
 func _on_execution_finished() -> void:
+	var tween := create_tween().set_ease(Tween.EASE_IN)
+	tween.tween_property(send_button, 'position:y', send_button_y, 0.05)
+	send_button.disabled = false
+	
 	MusicPlayer.play_planning_phase()
