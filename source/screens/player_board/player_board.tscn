@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://doer4mb2oveya" path="res://objects/dungeon_map/dungeon_map.tscn" id="3_crvft"]
 [ext_resource type="Texture2D" uid="uid://ugj80p4vf5s7" path="res://assets/tela-comandos/img-estojo.png" id="3_fdkoj"]
 [ext_resource type="Script" uid="uid://qqr0vx0x0wtd" path="res://screens/player_board/command_panel.gd" id="3_gmcyl"]
+[ext_resource type="PackedScene" uid="uid://bti2k0arongr" path="res://objects/back_button/back.tscn" id="4_nv8fb"]
 [ext_resource type="ButtonGroup" uid="uid://c7m42rextoubp" path="res://resources/stamp_buttom_group.tres" id="5_a7888"]
 [ext_resource type="Texture2D" uid="uid://c411bg35h1hbg" path="res://assets/tela-comandos/stamp_resources/north_stamp_normal.tres" id="5_fdkoj"]
 [ext_resource type="Script" uid="uid://dej4k1uq5hlke" path="res://screens/player_board/stamp_button.gd" id="5_o6cfa"]
@@ -35,6 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://dvv5jye5jiy1x" path="res://assets/tela-comandos/img-construto.png" id="31_8nj7m"]
 [ext_resource type="Texture2D" uid="uid://d2qlrlqy3p8du" path="res://assets/tela-comandos/img-papel.png" id="31_xvhie"]
 [ext_resource type="Texture2D" uid="uid://b8acy6h0ngds6" path="res://assets/tela-comandos/obj-botao-exe-del.png" id="33_ew4rn"]
+[ext_resource type="PackedScene" uid="uid://bt5drwxhb4p6r" path="res://objects/button_audio_stream_player/action_button_stream_player.tscn" id="36_2v2a8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xvhie"]
 
@@ -365,6 +367,26 @@ grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("31_8nj7m")
 
+[node name="Back" parent="Foreground/Control" unique_id=1779913824 instance=ExtResource("4_nv8fb")]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 70.0
+offset_right = 217.0
+offset_bottom = 153.0
+theme_override_font_sizes/font_size = 32
+
+[node name="Restart" type="Button" parent="Foreground/Control" unique_id=1887342509]
+layout_mode = 0
+offset_left = 1707.0
+offset_top = 66.0
+offset_right = 1890.0
+offset_bottom = 149.0
+theme_type_variation = &"GreenButton"
+theme_override_font_sizes/font_size = 32
+text = "Reiniciar"
+
+[node name="ActionButtonStreamPlayer" parent="Foreground/Control/Restart" unique_id=984961628 instance=ExtResource("36_2v2a8")]
+
 [node name="CursorContainer" type="CanvasLayer" parent="." unique_id=1342038296]
 unique_name_in_owner = true
 layer = 4
@@ -404,4 +426,5 @@ text = "REINICIAR"
 
 [connection signal="pressed" from="Foreground/Control/CleanButton" to="." method="_on_clean_button_pressed"]
 [connection signal="pressed" from="Foreground/Control/SendButton" to="." method="_on_send_button_pressed"]
+[connection signal="pressed" from="Foreground/Control/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="Congrats/PanelContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

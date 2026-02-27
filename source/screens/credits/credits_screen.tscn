@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://esircl14mywp" path="res://objects/credits_roller/credits_roller.tscn" id="2_efxxi"]
 [ext_resource type="Script" uid="uid://c2d37oyheaj2e" path="res://objects/credits_roller/credits_container.gd" id="3_7e4p0"]
 [ext_resource type="Texture2D" uid="uid://dxklwux1tbyqo" path="res://assets/tela-menu/img-titulo.png" id="4_urlqr"]
+[ext_resource type="PackedScene" uid="uid://bti2k0arongr" path="res://objects/back_button/back.tscn" id="6_nyiqa"]
 
 [node name="CreditsScreen" type="Control" unique_id=929341591]
 layout_mode = 3
@@ -289,14 +290,9 @@ text = "Obrigado por jogar!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Back" type="Button" parent="." unique_id=977525392]
+[node name="Back" parent="." unique_id=1779913824 instance=ExtResource("6_nyiqa")]
 layout_mode = 0
 offset_left = 1615.0
 offset_top = 909.0
 offset_right = 1860.0
 offset_bottom = 1020.0
-theme_type_variation = &"RedButton"
-theme_override_font_sizes/font_size = 48
-text = "Voltar"
-
-[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

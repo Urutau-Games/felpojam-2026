@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://hwqmvksab4lk" path="res://assets/tela-menu/bg-titulo.png" id="1_bnatf"]
 [ext_resource type="Script" uid="uid://bujhkx3mvbmur" path="res://screens/options/options_screen.gd" id="1_grs5g"]
+[ext_resource type="PackedScene" uid="uid://bti2k0arongr" path="res://objects/back_button/back.tscn" id="3_locpl"]
 
 [node name="OptionsScreen" type="Control" unique_id=1419411698]
 layout_mode = 3
@@ -77,16 +78,16 @@ step = 0.01
 tick_count = 5
 ticks_on_borders = true
 
-[node name="Back" type="Button" parent="VBoxContainer" unique_id=58660155]
+[node name="Back" parent="." unique_id=1779913824 instance=ExtResource("3_locpl")]
 custom_minimum_size = Vector2(245, 111)
-layout_mode = 2
+layout_mode = 0
+offset_left = 1615.0
+offset_top = 909.0
+offset_right = 1860.0
+offset_bottom = 1020.0
 size_flags_horizontal = 4
-theme_type_variation = &"RedButton"
-theme_override_font_sizes/font_size = 48
-text = "Voltar"
 
 [connection signal="drag_ended" from="VBoxContainer/GridContainer/MusicSlider" to="." method="_on_any_slider_drag_ended"]
 [connection signal="value_changed" from="VBoxContainer/GridContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
 [connection signal="drag_ended" from="VBoxContainer/GridContainer/EffectsSlider" to="." method="_on_any_slider_drag_ended"]
 [connection signal="value_changed" from="VBoxContainer/GridContainer/EffectsSlider" to="." method="_on_effects_slider_value_changed"]
-[connection signal="pressed" from="VBoxContainer/Back" to="." method="_on_back_pressed"]

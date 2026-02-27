@@ -13,6 +13,7 @@ const CLICK_LOCKED: int = 5
 @onready var cursor_container: CanvasLayer = %CursorContainer
 
 @export var stamp_button_group: ButtonGroup
+@export var action_button_delay: float = 0.5
 
 @onready var clean_button: TextureButton = %CleanButton
 @onready var send_button: TextureButton = %SendButton
@@ -90,3 +91,10 @@ func _on_execution_finished() -> void:
 	send_button.disabled = false
 	
 	MusicPlayer.play_planning_phase()
+
+func _on_restart_pressed() -> void:
+	await _action_timer().timeout
+	# Restuart current dungeon
+
+func _action_timer() -> SceneTreeTimer:
+	return get_tree().create_timer(action_button_delay)

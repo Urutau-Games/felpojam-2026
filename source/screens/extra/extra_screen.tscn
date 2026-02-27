@@ -10,6 +10,7 @@
 [ext_resource type="Resource" uid="uid://c02eldqac6q5m" path="res://resources/making_of/objects/sketches.tres" id="8_xnrip"]
 [ext_resource type="Resource" uid="uid://dxg2qkqb4fjm3" path="res://resources/making_of/objects/color_study.tres" id="9_obpph"]
 [ext_resource type="Resource" uid="uid://de4ypmi0vq7go" path="res://resources/making_of/objects/design_study.tres" id="10_iorjr"]
+[ext_resource type="PackedScene" uid="uid://bti2k0arongr" path="res://objects/back_button/back.tscn" id="11_ak7rt"]
 
 [node name="ExtraScreen" type="Control" unique_id=1274576772]
 layout_mode = 3
@@ -88,14 +89,9 @@ making_of = ExtResource("9_obpph")
 layout_mode = 2
 making_of = ExtResource("10_iorjr")
 
-[node name="Back" type="Button" parent="." unique_id=1309046614]
+[node name="Back" parent="." unique_id=1779913824 instance=ExtResource("11_ak7rt")]
 layout_mode = 0
 offset_left = 1615.0
 offset_top = 909.0
 offset_right = 1860.0
 offset_bottom = 1020.0
-theme_type_variation = &"RedButton"
-theme_override_font_sizes/font_size = 48
-text = "Voltar"
-
-[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

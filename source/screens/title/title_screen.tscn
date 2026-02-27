@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cugmea7otbvp1" path="res://screens/title/title_screen.gd" id="1_a0lyr"]
 [ext_resource type="Texture2D" uid="uid://douspepfri7dq" path="res://assets/tela-menu/bg-background-titulo.png" id="2_pefg2"]
+[ext_resource type="PackedScene" uid="uid://bt5drwxhb4p6r" path="res://objects/button_audio_stream_player/action_button_stream_player.tscn" id="3_7rk1i"]
 
 [node name="TitleScreen" type="Control" unique_id=1169439539]
 layout_mode = 3
@@ -36,12 +37,16 @@ theme_type_variation = &"GreenButton"
 theme_override_font_sizes/font_size = 48
 text = "Jogar"
 
+[node name="ActionButtonStreamPlayer" parent="PlayAndExit/Play" unique_id=984961628 instance=ExtResource("3_7rk1i")]
+
 [node name="Exit" type="Button" parent="PlayAndExit" unique_id=1458782358]
 custom_minimum_size = Vector2(245, 111)
 layout_mode = 2
 theme_type_variation = &"RedButton"
 theme_override_font_sizes/font_size = 48
 text = "Sair"
+
+[node name="ActionButtonStreamPlayer" parent="PlayAndExit/Exit" unique_id=681637327 instance=ExtResource("3_7rk1i")]
 
 [node name="Others" type="VBoxContainer" parent="." unique_id=51451187]
 layout_mode = 0
@@ -58,12 +63,16 @@ theme_type_variation = &"GreenButton"
 theme_override_font_sizes/font_size = 32
 text = "Opções"
 
+[node name="ActionButtonStreamPlayer" parent="Others/Options" unique_id=362270386 instance=ExtResource("3_7rk1i")]
+
 [node name="HowToPlay" type="Button" parent="Others" unique_id=601510062]
 custom_minimum_size = Vector2(245, 90)
 layout_mode = 2
 theme_type_variation = &"GreenButton"
 theme_override_font_sizes/font_size = 32
 text = "Como Jogar"
+
+[node name="ActionButtonStreamPlayer" parent="Others/HowToPlay" unique_id=2025698512 instance=ExtResource("3_7rk1i")]
 
 [node name="Credits" type="Button" parent="Others" unique_id=1695045701]
 custom_minimum_size = Vector2(245, 90)
@@ -72,6 +81,8 @@ theme_type_variation = &"GreenButton"
 theme_override_font_sizes/font_size = 32
 text = "Créditos"
 
+[node name="ActionButtonStreamPlayer" parent="Others/Credits" unique_id=574212634 instance=ExtResource("3_7rk1i")]
+
 [node name="Extras" type="Button" parent="Others" unique_id=1125773817]
 visible = false
 custom_minimum_size = Vector2(245, 90)
@@ -79,6 +90,8 @@ layout_mode = 2
 theme_type_variation = &"GreenButton"
 theme_override_font_sizes/font_size = 32
 text = "Extras"
+
+[node name="ActionButtonStreamPlayer" parent="Others/Extras" unique_id=1090617520 instance=ExtResource("3_7rk1i")]
 
 [connection signal="pressed" from="PlayAndExit/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="PlayAndExit/Exit" to="." method="_on_exit_pressed"]

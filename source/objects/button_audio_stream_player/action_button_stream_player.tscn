@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bt5drwxhb4p6r"]
+
+[ext_resource type="AudioStream" uid="uid://8hkef4lyrj13" path="res://assets/audio/sfx/button_click.wav" id="1_dllwi"]
+[ext_resource type="Script" uid="uid://dmngpk1wx0xpv" path="res://objects/button_audio_stream_player/button_audio_stream_player.gd" id="1_yxo1l"]
+
+[node name="ActionButtonStreamPlayer" type="AudioStreamPlayer" unique_id=984961628]
+stream = ExtResource("1_dllwi")
+bus = &"ActionButton"
+script = ExtResource("1_yxo1l")
+metadata/_custom_type_script = "uid://dmngpk1wx0xpv"
