@@ -84,3 +84,4 @@ text = "Extras"
 [connection signal="pressed" from="PlayAndExit/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="Others/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="Others/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="Others/Extras" to="." method="_on_extras_pressed"]

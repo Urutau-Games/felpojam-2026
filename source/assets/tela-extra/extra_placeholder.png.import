@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dywbr3bprb1rg"
-path="res://.godot/imported/disable_trap.png-20d6aa792c4bb637b2b0670d3a1d03d0.ctex"
+uid="uid://ble07ydaln2pl"
+path="res://.godot/imported/extra_placeholder.png-77181eec16bd5a1633dc3dead725e471.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/placeholders/disable_trap.png"
-dest_files=["res://.godot/imported/disable_trap.png-20d6aa792c4bb637b2b0670d3a1d03d0.ctex"]
+source_file="res://assets/tela-extra/extra_placeholder.png"
+dest_files=["res://.godot/imported/extra_placeholder.png-77181eec16bd5a1633dc3dead725e471.ctex"]
 
 [params]
 

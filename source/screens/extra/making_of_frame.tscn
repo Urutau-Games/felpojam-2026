@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bj6in4ow3u6rl"]
+
+[ext_resource type="Script" uid="uid://btked8vpq1oy6" path="res://screens/extra/extra_button.gd" id="1_x81c5"]
+[ext_resource type="Texture2D" uid="uid://ble07ydaln2pl" path="res://assets/tela-extra/extra_placeholder.png" id="2_c1iaw"]
+
+[node name="PanelContainer" type="PanelContainer" unique_id=1228748288]
+theme_type_variation = &"ExtraThumbContainer"
+script = ExtResource("1_x81c5")
+
+[node name="Extra1" type="TextureButton" parent="." unique_id=801825942]
+layout_mode = 2
+texture_normal = ExtResource("2_c1iaw")

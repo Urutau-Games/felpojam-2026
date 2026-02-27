@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://yw1f2sy3pbgf"]
+
+[ext_resource type="Script" uid="uid://dj1drjkcmvo72" path="res://screens/extra/extra_screen.gd" id="1_7uox2"]
+[ext_resource type="Texture2D" uid="uid://bl4gvs1qjguif" path="res://assets/tela-comandos/bg-background.png" id="1_xnfy5"]
+[ext_resource type="Texture2D" uid="uid://ugj80p4vf5s7" path="res://assets/tela-comandos/img-estojo.png" id="2_48mcu"]
+[ext_resource type="PackedScene" uid="uid://bj6in4ow3u6rl" path="res://screens/extra/making_of_frame.tscn" id="4_l40jj"]
+[ext_resource type="Resource" uid="uid://boh2bew3bn8cw" path="res://resources/making_of/objects/brainstorm.tres" id="5_7jkox"]
+[ext_resource type="Resource" uid="uid://cr0xmuwmsj86k" path="res://resources/making_of/objects/playtest.tres" id="6_ak7rt"]
+[ext_resource type="Resource" uid="uid://bgbh520ami8es" path="res://resources/making_of/objects/prototype.tres" id="7_6iux3"]
+[ext_resource type="Resource" uid="uid://c02eldqac6q5m" path="res://resources/making_of/objects/sketches.tres" id="8_xnrip"]
+[ext_resource type="Resource" uid="uid://dxg2qkqb4fjm3" path="res://resources/making_of/objects/color_study.tres" id="9_obpph"]
+[ext_resource type="Resource" uid="uid://de4ypmi0vq7go" path="res://resources/making_of/objects/design_study.tres" id="10_iorjr"]
+
+[node name="ExtraScreen" type="Control" unique_id=1274576772]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7uox2")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1278956008]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_xnfy5")
+
+[node name="CaseBackground" type="TextureRect" parent="." unique_id=973319567]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -357.5
+offset_right = 500.0
+offset_bottom = 357.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_48mcu")
+
+[node name="MarginContainer" type="MarginContainer" parent="CaseBackground" unique_id=1163696000]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 35
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="GridContainer" type="GridContainer" parent="CaseBackground/MarginContainer" unique_id=1102289253]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 25
+theme_override_constants/v_separation = 80
+columns = 3
+
+[node name="PanelContainer" parent="CaseBackground/MarginContainer/GridContainer" unique_id=1228748288 instance=ExtResource("4_l40jj")]
+layout_mode = 2
+making_of = ExtResource("5_7jkox")
+
+[node name="PanelContainer2" parent="CaseBackground/MarginContainer/GridContainer" unique_id=203652560 instance=ExtResource("4_l40jj")]
+layout_mode = 2
+making_of = ExtResource("6_ak7rt")
+
+[node name="PanelContainer3" parent="CaseBackground/MarginContainer/GridContainer" unique_id=1418230336 instance=ExtResource("4_l40jj")]
+layout_mode = 2
+making_of = ExtResource("7_6iux3")
+
+[node name="PanelContainer4" parent="CaseBackground/MarginContainer/GridContainer" unique_id=2068658933 instance=ExtResource("4_l40jj")]
+layout_mode = 2
+making_of = ExtResource("8_xnrip")
+
+[node name="PanelContainer5" parent="CaseBackground/MarginContainer/GridContainer" unique_id=593899095 instance=ExtResource("4_l40jj")]
+layout_mode = 2
+making_of = ExtResource("9_obpph")
+
+[node name="PanelContainer6" parent="CaseBackground/MarginContainer/GridContainer" unique_id=1214633869 instance=ExtResource("4_l40jj")]
+layout_mode = 2
+making_of = ExtResource("10_iorjr")
+
+[node name="Back" type="Button" parent="." unique_id=1309046614]
+layout_mode = 0
+offset_left = 1615.0
+offset_top = 909.0
+offset_right = 1860.0
+offset_bottom = 1020.0
+theme_type_variation = &"RedButton"
+theme_override_font_sizes/font_size = 48
+text = "Voltar"
+
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
