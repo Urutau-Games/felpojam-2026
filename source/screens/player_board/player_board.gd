@@ -18,7 +18,6 @@ const CLICK_LOCKED: int = 5
 
 @onready var constructs_sent_label: Label = %ConstructsSentLabel
 @onready var remaining_totems: Label = %RemainingTotems
-@onready var congrats_layer: CanvasLayer = %Congrats
 @onready var cursor_container: CanvasLayer = %CursorContainer
 @onready var dungeon_label: Label = %DungeonLabel
 
@@ -29,6 +28,7 @@ const CLICK_LOCKED: int = 5
 @onready var send_button_y: float = send_button.position.y
 
 @onready var sfx_player: AudioStreamPlayer = $SFXPlayer
+@onready var congrats_particles: GPUParticles2D = $Congrats/CongratsParticles
 
 func _ready() -> void:
 	MusicPlayer.play_planning_phase()
@@ -95,10 +95,13 @@ func _process(_delta: float) -> void:
 	remaining_totems.text = str(GameManager.run.remaining_totems)
 
 func _on_target_reached() -> void:
-	congrats_layer.visible = true
-
-func _on_button_pressed() -> void:
-	get_tree().reload_current_scene()
+	if GameManager.run.is_last_dungeon():
+		congrats_particles.restart()
+		await congrats_particles.finished
+		SceneManager._switch_scene(SceneManager.Scene.CREDITS)
+	else:
+		await _action_timer().timeout
+		GameManager.run.next_dungeon()
 
 func _on_execution_started() -> void:
 	MusicPlayer.play_action()

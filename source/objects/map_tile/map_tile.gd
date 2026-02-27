@@ -22,7 +22,8 @@ class_name MapTile
 	Constants.ROOM_EMPTY: null,
 	Constants.ROOM_HOLE: hole_icon,
 	Constants.ROOM_MONSTER: monster_icon,
-	Constants.ROOM_TRAP: trap_icon
+	Constants.ROOM_TRAP: trap_icon,
+	Constants.ROOM_DESTINATION: null
 }
 
 func _ready() -> void:

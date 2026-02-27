@@ -305,6 +305,13 @@ class GameRun:
 		
 		return Constants.ROOM_EMPTY
 
+	func next_dungeon() -> void:
+		current_dungeon += 1
+		start_current_dungeon()
+
+	func is_last_dungeon() -> bool:
+		return current_dungeon + 1 == dungeons.size()
+
 	func _start_dungeon(index: int) -> void:
 		dungeon = dungeons[index]
 		

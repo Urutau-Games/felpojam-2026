@@ -21,6 +21,7 @@ func _ready() -> void:
 	GameManager.command_failed.connect(_modulate_command.bind(Color.INDIAN_RED))
 	GameManager.command_finished.connect(_modulate_command.bind(Color.WHITE))
 	
+	GameManager.dungeon_started.connect(_on_dungeon_started)
 	GameManager.execution_finished.connect(_on_execution_finished)
 
 func _gui_input(event: InputEvent) -> void:
@@ -74,6 +75,9 @@ func _eject() -> void:
 
 func _on_execution_finished() -> void:
 	_eject()
+
+func _on_dungeon_started() -> void:
+	clear()
 
 func _modulate_command(command_index: int, color: Color) -> void:
 	var tile = command_grid.get_child(command_index) as TextureRect

@@ -40,6 +40,7 @@
 [ext_resource type="Texture2D" uid="uid://d2qlrlqy3p8du" path="res://assets/tela-comandos/img-papel.png" id="31_xvhie"]
 [ext_resource type="Texture2D" uid="uid://b8acy6h0ngds6" path="res://assets/tela-comandos/obj-botao-exe-del.png" id="33_ew4rn"]
 [ext_resource type="PackedScene" uid="uid://bt5drwxhb4p6r" path="res://objects/button_audio_stream_player/action_button_stream_player.tscn" id="36_2v2a8"]
+[ext_resource type="Texture2D" uid="uid://bs7cidj8027ql" path="res://assets/tela-comandos/grid_tile_resources/revealed_background.tres" id="41_fhtu7"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xvhie"]
 
@@ -51,8 +52,40 @@ region = Rect2(0, 0, 169, 55)
 atlas = ExtResource("33_ew4rn")
 region = Rect2(171, 0, 169, 55)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_crvft"]
-bg_color = Color(0.46666667, 0.6509804, 0.5372549, 0.9137255)
+[sub_resource type="Curve" id="Curve_qqeyr"]
+_data = [Vector2(0.045454547, 1), 0.0, 0.0, 0, 0, Vector2(0.7539185, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_15ldk"]
+curve = SubResource("Curve_qqeyr")
+
+[sub_resource type="Curve" id="Curve_ip0hr"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.4059561, 0.99183404), 0.0, 0.0, 0, 0, Vector2(1, -1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_nippo"]
+curve = SubResource("Curve_ip0hr")
+
+[sub_resource type="Curve" id="Curve_n0owd"]
+_data = [Vector2(0.020376176, 0), 0.0, 0.0, 0, 0, Vector2(0.29937303, 1), 0.0, 0.0, 0, 0, Vector2(0.54388714, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_gq4v0"]
+curve = SubResource("Curve_n0owd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vau2m"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 4.9999976
+linear_accel_max = 49.999996
+linear_accel_curve = SubResource("CurveTexture_nippo")
+scale_max = 7.0
+scale_curve = SubResource("CurveTexture_gq4v0")
+alpha_curve = SubResource("CurveTexture_15ldk")
 
 [node name="PlayerBoard" type="Control" unique_id=991625787]
 layout_mode = 3
@@ -400,35 +433,21 @@ layer = 4
 [node name="Debug" parent="." unique_id=929134522 instance=ExtResource("22_crvft")]
 layer = 999
 
-[node name="Congrats" type="CanvasLayer" parent="." unique_id=1927912857]
-unique_name_in_owner = true
+[node name="Congrats" type="CanvasLayer" parent="." unique_id=45535310]
 layer = 9999
-visible = false
 
-[node name="PanelContainer" type="PanelContainer" parent="Congrats" unique_id=1992364876]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_crvft")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Congrats/PanelContainer" unique_id=46409625]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="Label" type="Label" parent="Congrats/PanelContainer/VBoxContainer" unique_id=156191029]
-layout_mode = 2
-theme_override_colors/font_outline_color = Color(0, 0.29495418, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_font_sizes/font_size = 80
-text = "PARABÉNS!"
-
-[node name="Button" type="Button" parent="Congrats/PanelContainer/VBoxContainer" unique_id=1147021374]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "REINICIAR"
+[node name="CongratsParticles" type="GPUParticles2D" parent="Congrats" unique_id=1890084176]
+position = Vector2(940, 407)
+emitting = false
+amount = 75
+texture = ExtResource("41_fhtu7")
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.85
+randomness = 0.15
+fixed_fps = 0
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_vau2m")
 
 [node name="SFXPlayer" type="AudioStreamPlayer" parent="." unique_id=1030371179]
 bus = &"PlayerBoardEffects"
@@ -438,4 +457,3 @@ bus = &"PlayerBoardEffects"
 [connection signal="pressed" from="Foreground/Control/CleanButton" to="." method="_on_clean_button_pressed"]
 [connection signal="pressed" from="Foreground/Control/SendButton" to="." method="_on_send_button_pressed"]
 [connection signal="pressed" from="Foreground/Control/Restart" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="Congrats/PanelContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

@@ -49,6 +49,9 @@ texture_margin_top = 24.0
 texture_margin_right = 24.0
 texture_margin_bottom = 24.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2jsj3"]
+bg_color = Color(0.2, 0.06666667, 0.047058824, 0.9019608)
+
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0arac"]
 load_path = "res://.godot/imported/obj-figura-carimbada.png-cda6faa49c52ddf2513731311a351bba.ctex"
 
@@ -131,6 +134,8 @@ GreenButton/styles/normal = SubResource("StyleBoxTexture_611f8")
 GreenButton/styles/pressed = SubResource("StyleBoxTexture_upuy7")
 LogRichLabel/base_type = &"RichTextLabel"
 LogRichLabel/colors/default_color = Color(0.2, 0.06666667, 0.047058824, 1)
+MainOverlay/base_type = &"Panel"
+MainOverlay/styles/panel = SubResource("StyleBoxFlat_2jsj3")
 NotesLabel/base_type = &"Label"
 NotesLabel/colors/font_color = Color(0.30588236, 0.16470589, 0.11764706, 1)
 NotesLabel/font_sizes/font_size = 20
