@@ -29,11 +29,10 @@ func _gui_input(event: InputEvent) -> void:
 		return
 		
 	if event.is_action_released("place_command"):
-		command_placed.emit()
 		_place_command(GameManager.active_stamp)
 
 func _place_command(stamp_data: StampData) -> void:
-	if _has_space(stamp_data):
+	if GameManager.active_stamp and _has_space(stamp_data):
 		var tile = TextureRect.new()
 		tile.texture = stamp_data.stamp_texture
 		tile.modulate = Color(Color.WHITE, stamp_data.charge)
@@ -44,6 +43,8 @@ func _place_command(stamp_data: StampData) -> void:
 		_used_slots += stamp_data.command_size
 		
 		_commands.push_back(stamp_data.command)
+		
+		command_placed.emit()
 		
 	if not _has_space(stamp_data):
 		GameManager.release_stamp()

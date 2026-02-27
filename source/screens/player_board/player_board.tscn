@@ -151,6 +151,7 @@ offset_left = 444.0
 offset_top = 31.0
 offset_right = 1372.0
 offset_bottom = 339.0
+view_time = 0.3
 
 [node name="Buttons" type="Control" parent="Game/MarginContainer/Control" unique_id=1917518416]
 anchors_preset = 0

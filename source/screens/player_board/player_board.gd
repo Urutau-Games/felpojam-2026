@@ -94,7 +94,7 @@ func _on_stamp_dropped(is_release = false) -> void:
 	for cursor in cursor_container.get_children():
 		cursor.queue_free()
 		
-	if is_release:
+	if is_release and GameManager.active_stamp:
 		stamp_button_group.get_pressed_button().set_pressed_no_signal(false)
 
 # TODO: Move to an observable approach

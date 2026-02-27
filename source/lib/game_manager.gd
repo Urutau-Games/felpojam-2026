@@ -16,7 +16,7 @@ signal dungeon_changed(position: Vector2i, new_value: StringName)
 @warning_ignore("unused_signal")
 signal dungeon_started()
 
-signal scan_completed(items: Dictionary[StringName, int])
+signal scan_completed(items: Array[ScanResult])
 
 signal target_reached()
 
@@ -142,16 +142,13 @@ func _scan() -> bool:
 	if run.has_monster():
 		return false
 		
-	var found_items: Dictionary[StringName, int] = {}
+	var found_items: Array[ScanResult] = []
 	
 	for possible_move in Constants.ADJACENT_ROOMS:
-		var item := run.scan(possible_move)
+		var result := run.scan(possible_move)
 		
-		if not item == Constants.ROOM_EMPTY:
-			if item in found_items.keys(): 
-				found_items[item] += 1
-			else: 
-				found_items[item] = 1
+		if result:
+			found_items.push_back(result)
 			
 	scan_completed.emit(found_items)
 	
@@ -166,6 +163,14 @@ func _attack() -> bool:
 	
 	return true
 #endregion
+
+class ScanResult:
+	var item: StringName
+	var room: Vector2i
+
+	func _init(new_item: StringName, new_room: Vector2i) -> void:
+		item = new_item
+		room = new_room
 
 class Dungeon:
 	var starting_room: Vector2i
@@ -294,15 +299,15 @@ class GameRun:
 		if dungeon.is_in_boundaries(next_room) and dungeon.room_value(next_room) == Constants.ROOM_TRAP:
 			make_empty(next_room)
 
-	func scan(direction: Vector2i) -> StringName:
+	func scan(direction: Vector2i) -> ScanResult:
 		var next_room := current_room + direction
 		
 		if dungeon.is_in_boundaries(next_room):
 			var room_value := dungeon.room_value(next_room)
 			if Constants.SCANNEABLE_ITEMS.has(room_value):
-				return room_value
+				return ScanResult.new(room_value, next_room)
 		
-		return Constants.ROOM_EMPTY
+		return null
 
 	func next_dungeon() -> void:
 		current_dungeon += 1

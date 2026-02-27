@@ -47,6 +47,10 @@ func reveal(room_value: StringName) -> void:
 	background.texture = revealed_background
 	icon.texture = _icon_map[room_value]
 
+func shadow() -> void:
+	background.texture = hidden_backgorund
+	icon.texture = null
+
 func _set_as_starting_point() -> void:
 	background.texture = starting_point_texture
 	icon.texture = null
