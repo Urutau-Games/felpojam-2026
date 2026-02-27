@@ -4,6 +4,15 @@ const CLICK_AMOUNT: int = 40
 const CLICK_PULL_BACK: int = CLICK_AMOUNT - 5
 const CLICK_LOCKED: int = 5
 
+@export var stamp_button_group: ButtonGroup
+@export var action_button_delay: float = 0.5
+
+@export_group("SFX Streams")
+@export var execute_locked: AudioStream
+@export var execute_clicked: AudioStream
+@export var cancel_clicked: AudioStream
+@export var stamp_placed: AudioStream
+
 @onready var dungeon_map: GridContainer = %DungeonMap
 @onready var command_panel: CommandPanel = %CommandPanel
 
@@ -12,14 +21,13 @@ const CLICK_LOCKED: int = 5
 @onready var congrats_layer: CanvasLayer = %Congrats
 @onready var cursor_container: CanvasLayer = %CursorContainer
 
-@export var stamp_button_group: ButtonGroup
-@export var action_button_delay: float = 0.5
-
 @onready var clean_button: TextureButton = %CleanButton
 @onready var send_button: TextureButton = %SendButton
 
 @onready var clean_button_y: float = clean_button.position.y
 @onready var send_button_y: float = send_button.position.y
+
+@onready var sfx_player: AudioStreamPlayer = $SFXPlayer
 
 func _ready() -> void:
 	MusicPlayer.play_planning_phase()
@@ -36,6 +44,8 @@ func _on_clean_button_pressed() -> void:
 	tween.tween_property(clean_button, 'position:y', clean_button_y + CLICK_PULL_BACK, 0.05)
 	tween.tween_property(clean_button, 'position:y', clean_button_y, 0.05)
 	
+	_play_sfx(cancel_clicked)
+	
 	command_panel.clear()
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -47,14 +57,17 @@ func _on_send_button_pressed() -> void:
 		var tween := create_tween().set_ease(Tween.EASE_IN)
 		tween.tween_property(send_button, 'position:y', send_button_y + CLICK_LOCKED, 0.05)
 		tween.tween_property(send_button, 'position:y', send_button_y, 0.05)
+		
+		_play_sfx(execute_locked)
 	else:
 		var tween := create_tween().set_ease(Tween.EASE_IN)
 		tween.tween_property(send_button, 'position:y', send_button_y + CLICK_AMOUNT, 0.05)
 		tween.tween_property(send_button, 'position:y', send_button_y + CLICK_PULL_BACK, 0.05)
 		tween.tween_callback(command_panel.send)
 		
-		send_button.disabled = true
+		_play_sfx(execute_clicked)
 		
+		send_button.disabled = true
 
 func _on_stamp_picked(stamp: StampData) -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
@@ -98,3 +111,10 @@ func _on_restart_pressed() -> void:
 
 func _action_timer() -> SceneTreeTimer:
 	return get_tree().create_timer(action_button_delay)
+
+func _play_sfx(stream: AudioStream) -> void:
+	sfx_player.stream = stream
+	sfx_player.play()
+
+func _on_command_panel_command_placed() -> void:
+	_play_sfx(stamp_placed)

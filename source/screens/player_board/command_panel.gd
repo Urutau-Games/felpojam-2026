@@ -1,6 +1,8 @@
 extends Control
 class_name CommandPanel
 
+signal command_placed()
+
 @onready var command_grid: GridContainer = %CommandGrid
 @onready var place_totem_button: TextureButton = %PlaceTotemButton
 
@@ -26,6 +28,7 @@ func _gui_input(event: InputEvent) -> void:
 		return
 		
 	if event.is_action_released("place_command"):
+		command_placed.emit()
 		_place_command(GameManager.active_stamp)
 
 func _place_command(stamp_data: StampData) -> void:
