@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://ch3my48no2kli"]
+
+[ext_resource type="Texture2D" uid="uid://bl4gvs1qjguif" path="res://assets/tela-comandos/bg-background.png" id="1_l5j0u"]
+[ext_resource type="Script" uid="uid://bumsx2fag0ngn" path="res://screens/instructions/instructions_screen.gd" id="1_mb3nb"]
+[ext_resource type="Texture2D" uid="uid://vv6fpjfw7lfj" path="res://assets/tela-menu/ovl-como-jogar.png" id="1_nk627"]
+[ext_resource type="PackedScene" uid="uid://bti2k0arongr" path="res://objects/back_button/back.tscn" id="3_h1u1d"]
+[ext_resource type="PackedScene" uid="uid://bt5drwxhb4p6r" path="res://objects/button_audio_stream_player/action_button_stream_player.tscn" id="4_mb3nb"]
+
+[node name="InstructionsScreen" type="Control" unique_id=514996815]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mb3nb")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1538922376]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_l5j0u")
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=668401239]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_nk627")
+
+[node name="Back" parent="." unique_id=1779913824 instance=ExtResource("3_h1u1d")]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 969.0
+offset_right = 217.0
+offset_bottom = 1052.0
+theme_override_font_sizes/font_size = 32
+
+[node name="Play" type="Button" parent="." unique_id=1611721559]
+layout_mode = 0
+offset_left = 1707.0
+offset_top = 969.0
+offset_right = 1890.0
+offset_bottom = 1052.0
+theme_type_variation = &"GreenButton"
+theme_override_font_sizes/font_size = 32
+text = "Jogar"
+
+[node name="ActionButtonStreamPlayer" parent="Play" unique_id=984961628 instance=ExtResource("4_mb3nb")]
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]

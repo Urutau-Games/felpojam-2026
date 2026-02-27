@@ -3,7 +3,7 @@ extends CanvasLayer
 const NEW_LOG_LINE: String = "%s\n"
 const COLOR_TEMPLATE: String = "[color=#%s]%s[/color]"
 
-const HIGHLIGHT: String = "[color=#D6A765]%s[/color]"
+const HIGHLIGHT: String = "[color=#6e5026]%s[/color]"
 
 const ITEM_TEMPLATE: String = "\t%s: %s"
 
@@ -46,13 +46,9 @@ func _on_command_failed(command_index: int) -> void:
 func _on_dungeon_changed(room: Vector2i, new_value: StringName) -> void:
 	_append_log("Sala %s agora é %s" % [_highlight(room), _from_room(new_value)])
 
-func _on_scan_completed(items: Dictionary[StringName, int]) -> void:
+func _on_scan_completed(_items: Array[GameManager.ScanResult]) -> void:
 	_append_log("Análise concluída")
-	_append_log("Resultados:")
 	
-	for item in items.keys():
-		_append_log(ITEM_TEMPLATE % [_from_room(item), _highlight(items[item])])
-
 func _on_target_reached() -> void:
 	_append_success_message("Chegou no destino!")
 

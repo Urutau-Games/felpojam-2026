@@ -1,6 +1,8 @@
 extends Control
 class_name CommandPanel
 
+signal command_placed()
+
 @onready var command_grid: GridContainer = %CommandGrid
 @onready var place_totem_button: TextureButton = %PlaceTotemButton
 
@@ -19,6 +21,7 @@ func _ready() -> void:
 	GameManager.command_failed.connect(_modulate_command.bind(Color.INDIAN_RED))
 	GameManager.command_finished.connect(_modulate_command.bind(Color.WHITE))
 	
+	GameManager.dungeon_started.connect(_on_dungeon_started)
 	GameManager.execution_finished.connect(_on_execution_finished)
 
 func _gui_input(event: InputEvent) -> void:
@@ -29,7 +32,7 @@ func _gui_input(event: InputEvent) -> void:
 		_place_command(GameManager.active_stamp)
 
 func _place_command(stamp_data: StampData) -> void:
-	if _has_space(stamp_data):
+	if GameManager.active_stamp and _has_space(stamp_data):
 		var tile = TextureRect.new()
 		tile.texture = stamp_data.stamp_texture
 		tile.modulate = Color(Color.WHITE, stamp_data.charge)
@@ -40,6 +43,8 @@ func _place_command(stamp_data: StampData) -> void:
 		_used_slots += stamp_data.command_size
 		
 		_commands.push_back(stamp_data.command)
+		
+		command_placed.emit()
 		
 	if not _has_space(stamp_data):
 		GameManager.release_stamp()
@@ -72,10 +77,13 @@ func _eject() -> void:
 func _on_execution_finished() -> void:
 	_eject()
 
+func _on_dungeon_started() -> void:
+	clear()
+
 func _modulate_command(command_index: int, color: Color) -> void:
 	var tile = command_grid.get_child(command_index) as TextureRect
 	tile.modulate = color
 
 #TODO: Move some logic to observable
 func _process(_delta: float) -> void:
-	place_totem_button.disabled = GameManager.totems_remaining <= 0
+	place_totem_button.disabled = GameManager.run.remaining_totems <= 0

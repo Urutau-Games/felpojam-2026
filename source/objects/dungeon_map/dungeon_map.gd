@@ -2,19 +2,32 @@ extends GridContainer
 
 @export var map_tile_scene: PackedScene
 
+@export var time_between_reviews: float = 0.1
+@export var time_between_hides: float = 0.1
+@export var view_time: float = 0.5
+
 const AUTO_REVEALED_ROOMS: Array[StringName] = [Constants.ROOM_ENTRANCE, Constants.ROOM_DESTINATION]
 
 func _ready() -> void:
+	_connect_signals()
+	_clear_dungeon()
+
+func _connect_signals() -> void:
 	GameManager.position_revealed.connect(_on_position_revealed)
 	GameManager.dungeon_changed.connect(_on_dungeon_changed)
 	GameManager.construct_moved.connect(_on_construct_moved)
 	
-	_clean_placeholders()
+	GameManager.dungeon_started.connect(_on_dungeon_started)
+	
+	GameManager.scan_completed.connect(_on_scan_completed)
+
+func _on_dungeon_started() -> void:
+	_clear_dungeon()
 	_initialize_map()
 
-func _clean_placeholders() -> void:
-	for placeholder in get_children():
-		placeholder.queue_free()
+func _clear_dungeon() -> void:
+	for tile in get_children():
+		tile.queue_free()
 
 func _initialize_map() -> void:
 	for row in Constants.DUNGEON_HEIGHT:
@@ -22,7 +35,7 @@ func _initialize_map() -> void:
 			var tile: MapTile = map_tile_scene.instantiate()
 			add_child(tile)
 			
-			var room_value = GameManager.dungeon[row][col]
+			var room_value = GameManager.run.dungeon.rooms[row][col]
 			
 			if AUTO_REVEALED_ROOMS.has(room_value):
 				tile.set_special_tile(room_value)
@@ -41,10 +54,21 @@ func _on_construct_moved(_from: Vector2i, to: Vector2i) -> void:
 	tween.tween_property(tile, 'modulate', Color.WHITE, 0.25)
 
 func _on_dungeon_changed(room_position: Vector2i, new_value: StringName) -> void:
-	if GameManager.starting_room == room_position:
+	if GameManager.run.starting_room == room_position:
 		_get_tile_at(room_position).set_special_tile(new_value)
-	elif GameManager.revealed_positions.has(room_position):
+	elif GameManager.run.revealed_positions.has(room_position):
 		_get_tile_at(room_position).reveal(new_value)
+
+func _on_scan_completed(results: Array[GameManager.ScanResult]) -> void:
+	for result in results:
+		_get_tile_at(result.room).reveal(result.item)
+		await get_tree().create_timer(time_between_reviews).timeout
+		
+	await get_tree().create_timer(view_time).timeout
+	
+	for result in results:
+		_get_tile_at(result.room).shadow()
+		await get_tree().create_timer(time_between_hides).timeout
 
 func _get_tile_at(room_position: Vector2i) -> MapTile:
 	return get_child(_to_index(room_position)) as MapTile

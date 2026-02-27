@@ -13,10 +13,16 @@ config_version=5
 config/name="Ruínas de Krimbo"
 run/main_scene="uid://didjfi4wjm87h"
 config/features=PackedStringArray("4.6", "GL Compatibility")
+boot_splash/image="uid://hwqmvksab4lk"
 config/icon="uid://prb6t3xruwgi"
+
+[audio]
+
+buses/default_bus_layout="uid://d1uexdadefrkm"
 
 [autoload]
 
+ExtrasManager="*uid://dwf52shw623op"
 GameManager="*uid://d2ltm6fxv6lsr"
 AudioManager="*uid://3mdxhubrcqsc"
 MusicPlayer="*uid://dhsisp2s0hx3v"

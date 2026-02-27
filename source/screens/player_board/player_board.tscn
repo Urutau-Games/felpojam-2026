@@ -5,9 +5,14 @@
 [ext_resource type="PackedScene" uid="uid://doer4mb2oveya" path="res://objects/dungeon_map/dungeon_map.tscn" id="3_crvft"]
 [ext_resource type="Texture2D" uid="uid://ugj80p4vf5s7" path="res://assets/tela-comandos/img-estojo.png" id="3_fdkoj"]
 [ext_resource type="Script" uid="uid://qqr0vx0x0wtd" path="res://screens/player_board/command_panel.gd" id="3_gmcyl"]
+[ext_resource type="PackedScene" uid="uid://cpxgsoecab8oy" path="res://objects/extra_alert/extra_alert.tscn" id="3_qqeyr"]
+[ext_resource type="AudioStream" uid="uid://bdn2wcjertimc" path="res://assets/audio/sfx/button_locked.wav" id="3_y0ir0"]
+[ext_resource type="AudioStream" uid="uid://8hkef4lyrj13" path="res://assets/audio/sfx/button_click.wav" id="4_fhtu7"]
+[ext_resource type="PackedScene" uid="uid://bti2k0arongr" path="res://objects/back_button/back.tscn" id="4_nv8fb"]
 [ext_resource type="ButtonGroup" uid="uid://c7m42rextoubp" path="res://resources/stamp_buttom_group.tres" id="5_a7888"]
 [ext_resource type="Texture2D" uid="uid://c411bg35h1hbg" path="res://assets/tela-comandos/stamp_resources/north_stamp_normal.tres" id="5_fdkoj"]
 [ext_resource type="Script" uid="uid://dej4k1uq5hlke" path="res://screens/player_board/stamp_button.gd" id="5_o6cfa"]
+[ext_resource type="AudioStream" uid="uid://xo877j4qu7yx" path="res://assets/audio/sfx/stamp.wav" id="5_qqeyr"]
 [ext_resource type="Resource" uid="uid://b4mk18ilvup2u" path="res://resources/stamp_data/objects/north.tres" id="6_m1ej2"]
 [ext_resource type="Texture2D" uid="uid://dqjht58ea0pkd" path="res://assets/tela-comandos/stamp_resources/north_stamp_pressed.tres" id="6_vt3b7"]
 [ext_resource type="Resource" uid="uid://dnm0ur0p37uih" path="res://resources/stamp_data/objects/south.tres" id="8_7ur55"]
@@ -35,6 +40,8 @@
 [ext_resource type="Texture2D" uid="uid://dvv5jye5jiy1x" path="res://assets/tela-comandos/img-construto.png" id="31_8nj7m"]
 [ext_resource type="Texture2D" uid="uid://d2qlrlqy3p8du" path="res://assets/tela-comandos/img-papel.png" id="31_xvhie"]
 [ext_resource type="Texture2D" uid="uid://b8acy6h0ngds6" path="res://assets/tela-comandos/obj-botao-exe-del.png" id="33_ew4rn"]
+[ext_resource type="PackedScene" uid="uid://bt5drwxhb4p6r" path="res://objects/button_audio_stream_player/action_button_stream_player.tscn" id="36_2v2a8"]
+[ext_resource type="Texture2D" uid="uid://bs7cidj8027ql" path="res://assets/tela-comandos/grid_tile_resources/revealed_background.tres" id="41_fhtu7"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xvhie"]
 
@@ -46,8 +53,40 @@ region = Rect2(0, 0, 169, 55)
 atlas = ExtResource("33_ew4rn")
 region = Rect2(171, 0, 169, 55)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_crvft"]
-bg_color = Color(0.46666667, 0.6509804, 0.5372549, 0.9137255)
+[sub_resource type="Curve" id="Curve_qqeyr"]
+_data = [Vector2(0.045454547, 1), 0.0, 0.0, 0, 0, Vector2(0.7539185, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_15ldk"]
+curve = SubResource("Curve_qqeyr")
+
+[sub_resource type="Curve" id="Curve_ip0hr"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.4059561, 0.99183404), 0.0, 0.0, 0, 0, Vector2(1, -1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_nippo"]
+curve = SubResource("Curve_ip0hr")
+
+[sub_resource type="Curve" id="Curve_n0owd"]
+_data = [Vector2(0.020376176, 0), 0.0, 0.0, 0, 0, Vector2(0.29937303, 1), 0.0, 0.0, 0, 0, Vector2(0.54388714, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_gq4v0"]
+curve = SubResource("Curve_n0owd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vau2m"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 4.9999976
+linear_accel_max = 49.999996
+linear_accel_curve = SubResource("CurveTexture_nippo")
+scale_max = 7.0
+scale_curve = SubResource("CurveTexture_gq4v0")
+alpha_curve = SubResource("CurveTexture_15ldk")
 
 [node name="PlayerBoard" type="Control" unique_id=991625787]
 layout_mode = 3
@@ -58,6 +97,11 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xkjum")
 stamp_button_group = ExtResource("5_a7888")
+extra_alert_scene = ExtResource("3_qqeyr")
+execute_locked = ExtResource("3_y0ir0")
+execute_clicked = ExtResource("4_fhtu7")
+cancel_clicked = ExtResource("4_fhtu7")
+stamp_placed = ExtResource("5_qqeyr")
 metadata/_edit_horizontal_guides_ = [200.0]
 
 [node name="Background" type="CanvasLayer" parent="." unique_id=2101779868]
@@ -107,6 +151,7 @@ offset_left = 444.0
 offset_top = 31.0
 offset_right = 1372.0
 offset_bottom = 339.0
+view_time = 0.3
 
 [node name="Buttons" type="Control" parent="Game/MarginContainer/Control" unique_id=1917518416]
 anchors_preset = 0
@@ -273,7 +318,21 @@ theme_type_variation = &"PaperContainer"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Game/MarginContainer/Control/Panel" unique_id=1747943703]
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 15
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Game/MarginContainer/Control/Panel/VBoxContainer2" unique_id=192922090]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Game/MarginContainer/Control/Panel/VBoxContainer2/HBoxContainer3" unique_id=1932598632]
+layout_mode = 2
+theme_type_variation = &"NotesLabel"
+text = "Dungeon:"
+
+[node name="DungeonLabel" type="Label" parent="Game/MarginContainer/Control/Panel/VBoxContainer2/HBoxContainer3" unique_id=999005623]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"NotesLabel"
+text = "0"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Game/MarginContainer/Control/Panel/VBoxContainer2" unique_id=13713384]
 layout_mode = 2
@@ -303,22 +362,8 @@ layout_mode = 2
 theme_type_variation = &"NotesLabel"
 text = "3"
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="Game/MarginContainer/Control/Panel/VBoxContainer2" unique_id=192922090]
-visible = false
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Game/MarginContainer/Control/Panel/VBoxContainer2/HBoxContainer3" unique_id=1932598632]
-layout_mode = 2
-theme_type_variation = &"NotesLabel"
-text = "Dungeons concluídas: "
-
-[node name="FinishedDugeonsLabel" type="Label" parent="Game/MarginContainer/Control/Panel/VBoxContainer2/HBoxContainer3" unique_id=999005623]
-unique_name_in_owner = true
-layout_mode = 2
-theme_type_variation = &"NotesLabel"
-text = "0"
-
 [node name="Foreground" type="CanvasLayer" parent="." unique_id=586690456]
+unique_name_in_owner = true
 layer = 3
 
 [node name="Control" type="Control" parent="Foreground" unique_id=1569884245]
@@ -365,6 +410,26 @@ grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("31_8nj7m")
 
+[node name="Back" parent="Foreground/Control" unique_id=1779913824 instance=ExtResource("4_nv8fb")]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 70.0
+offset_right = 217.0
+offset_bottom = 153.0
+theme_override_font_sizes/font_size = 32
+
+[node name="Restart" type="Button" parent="Foreground/Control" unique_id=1887342509]
+layout_mode = 0
+offset_left = 1707.0
+offset_top = 66.0
+offset_right = 1890.0
+offset_bottom = 149.0
+theme_type_variation = &"GreenButton"
+theme_override_font_sizes/font_size = 32
+text = "Reiniciar"
+
+[node name="ActionButtonStreamPlayer" parent="Foreground/Control/Restart" unique_id=984961628 instance=ExtResource("36_2v2a8")]
+
 [node name="CursorContainer" type="CanvasLayer" parent="." unique_id=1342038296]
 unique_name_in_owner = true
 layer = 4
@@ -372,36 +437,27 @@ layer = 4
 [node name="Debug" parent="." unique_id=929134522 instance=ExtResource("22_crvft")]
 layer = 999
 
-[node name="Congrats" type="CanvasLayer" parent="." unique_id=1927912857]
-unique_name_in_owner = true
+[node name="Congrats" type="CanvasLayer" parent="." unique_id=45535310]
 layer = 9999
-visible = false
 
-[node name="PanelContainer" type="PanelContainer" parent="Congrats" unique_id=1992364876]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_crvft")
+[node name="CongratsParticles" type="GPUParticles2D" parent="Congrats" unique_id=1890084176]
+position = Vector2(940, 407)
+emitting = false
+amount = 75
+texture = ExtResource("41_fhtu7")
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.85
+randomness = 0.15
+fixed_fps = 0
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_vau2m")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Congrats/PanelContainer" unique_id=46409625]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="." unique_id=1030371179]
+bus = &"PlayerBoardEffects"
 
-[node name="Label" type="Label" parent="Congrats/PanelContainer/VBoxContainer" unique_id=156191029]
-layout_mode = 2
-theme_override_colors/font_outline_color = Color(0, 0.29495418, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_font_sizes/font_size = 80
-text = "PARABÉNS!"
-
-[node name="Button" type="Button" parent="Congrats/PanelContainer/VBoxContainer" unique_id=1147021374]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "REINICIAR"
-
+[connection signal="command_placed" from="Game/MarginContainer/Control/CommandPanel" to="." method="_on_command_panel_command_placed"]
+[connection signal="mouse_entered" from="Foreground/Control" to="." method="_on_control_mouse_entered"]
 [connection signal="pressed" from="Foreground/Control/CleanButton" to="." method="_on_clean_button_pressed"]
 [connection signal="pressed" from="Foreground/Control/SendButton" to="." method="_on_send_button_pressed"]
-[connection signal="pressed" from="Congrats/PanelContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Foreground/Control/Restart" to="." method="_on_restart_pressed"]

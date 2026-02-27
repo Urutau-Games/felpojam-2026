@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bti2k0arongr"]
+
+[ext_resource type="PackedScene" uid="uid://bt5drwxhb4p6r" path="res://objects/button_audio_stream_player/action_button_stream_player.tscn" id="1_qw54u"]
+[ext_resource type="Script" uid="uid://mx1eo83q2xqh" path="res://objects/back_button/back.gd" id="1_yuv6g"]
+
+[node name="Back" type="Button" unique_id=1779913824]
+offset_right = 245.0
+offset_bottom = 111.0
+theme_type_variation = &"RedButton"
+theme_override_font_sizes/font_size = 48
+text = "Menu"
+script = ExtResource("1_yuv6g")
+
+[node name="ActionButtonStreamPlayer" parent="." unique_id=984961628 instance=ExtResource("1_qw54u")]

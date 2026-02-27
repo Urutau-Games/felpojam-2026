@@ -2,11 +2,99 @@
 
 [ext_resource type="Script" uid="uid://btked8vpq1oy6" path="res://screens/extra/extra_button.gd" id="1_x81c5"]
 [ext_resource type="Texture2D" uid="uid://ble07ydaln2pl" path="res://assets/tela-extra/extra_placeholder.png" id="2_c1iaw"]
+[ext_resource type="PackedScene" uid="uid://bt5drwxhb4p6r" path="res://objects/button_audio_stream_player/action_button_stream_player.tscn" id="3_c1iaw"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_x81c5"]
+size = Vector2(800, 600)
 
 [node name="PanelContainer" type="PanelContainer" unique_id=1228748288]
 theme_type_variation = &"ExtraThumbContainer"
 script = ExtResource("1_x81c5")
+unknown_texture = ExtResource("2_c1iaw")
 
-[node name="Extra1" type="TextureButton" parent="." unique_id=801825942]
+[node name="Frame" type="TextureButton" parent="." unique_id=801825942]
+custom_minimum_size = Vector2(280, 250)
 layout_mode = 2
 texture_normal = ExtResource("2_c1iaw")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ActionButtonStreamPlayer" parent="Frame" unique_id=984961628 instance=ExtResource("3_c1iaw")]
+
+[node name="Overlay" type="CanvasLayer" parent="." unique_id=1595014158]
+layer = 999
+visible = false
+
+[node name="Control" type="Control" parent="Overlay" unique_id=831385980]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="Overlay/Control" unique_id=2063116374]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"MainOverlay"
+
+[node name="MarginContainer" type="MarginContainer" parent="Overlay/Control/Panel" unique_id=34765083]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Overlay/Control/Panel/MarginContainer" unique_id=992757508]
+layout_mode = 2
+
+[node name="FullPicture" type="TextureRect" parent="Overlay/Control/Panel/MarginContainer/HBoxContainer" unique_id=1030152424]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("PlaceholderTexture2D_x81c5")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Overlay/Control/Panel/MarginContainer/HBoxContainer" unique_id=802298821]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_constants/separation = 75
+
+[node name="Title" type="Label" parent="Overlay/Control/Panel/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=714905071]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_type_variation = &"ExtraTitle"
+text = "Título"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="Overlay/Control/Panel/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1870589515]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_type_variation = &"ExtraDescription"
+text = "Aqui vai alguma descrição interessante ou curiosa dessa imagem!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Close" type="Button" parent="Overlay/Control/Panel/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=209737936]
+custom_minimum_size = Vector2(196, 88.8)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"RedButton"
+theme_override_font_sizes/font_size = 32
+text = "Fechar"
+
+[node name="ActionButtonStreamPlayer" parent="Overlay/Control/Panel/MarginContainer/HBoxContainer/VBoxContainer2/Close" unique_id=218403287 instance=ExtResource("3_c1iaw")]
+
+[connection signal="pressed" from="Frame" to="." method="_on_frame_pressed"]
+[connection signal="pressed" from="Overlay/Control/Panel/MarginContainer/HBoxContainer/VBoxContainer2/Close" to="." method="_on_close_pressed"]
