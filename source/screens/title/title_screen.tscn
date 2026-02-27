@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://didjfi4wjm87h"]
 
 [ext_resource type="Script" uid="uid://cugmea7otbvp1" path="res://screens/title/title_screen.gd" id="1_a0lyr"]
-[ext_resource type="Texture2D" uid="uid://demx0ps3s7oc0" path="res://assets/tela-menu/bg-background.png" id="2_pefg2"]
+[ext_resource type="Texture2D" uid="uid://douspepfri7dq" path="res://assets/tela-menu/bg-background-titulo.png" id="2_pefg2"]
 
 [node name="TitleScreen" type="Control" unique_id=1169439539]
 layout_mode = 3
@@ -51,19 +51,19 @@ offset_right = 875.0
 offset_bottom = 678.0
 theme_override_constants/separation = 15
 
-[node name="HowToPlay" type="Button" parent="Others" unique_id=601510062]
-custom_minimum_size = Vector2(245, 90)
-layout_mode = 2
-theme_type_variation = &"GreenButton"
-theme_override_font_sizes/font_size = 32
-text = "Como Jogar"
-
 [node name="Options" type="Button" parent="Others" unique_id=911742888]
 custom_minimum_size = Vector2(245, 90)
 layout_mode = 2
 theme_type_variation = &"GreenButton"
 theme_override_font_sizes/font_size = 32
 text = "Opções"
+
+[node name="HowToPlay" type="Button" parent="Others" unique_id=601510062]
+custom_minimum_size = Vector2(245, 90)
+layout_mode = 2
+theme_type_variation = &"GreenButton"
+theme_override_font_sizes/font_size = 32
+text = "Como Jogar"
 
 [node name="Credits" type="Button" parent="Others" unique_id=1695045701]
 custom_minimum_size = Vector2(245, 90)
@@ -72,5 +72,13 @@ theme_type_variation = &"GreenButton"
 theme_override_font_sizes/font_size = 32
 text = "Créditos"
 
+[node name="Extras" type="Button" parent="Others" unique_id=1125773817]
+custom_minimum_size = Vector2(245, 90)
+layout_mode = 2
+theme_type_variation = &"GreenButton"
+theme_override_font_sizes/font_size = 32
+text = "Extras"
+
 [connection signal="pressed" from="PlayAndExit/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="PlayAndExit/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Others/Credits" to="." method="_on_credits_pressed"]

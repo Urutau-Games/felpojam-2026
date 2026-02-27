@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://esircl14mywp"]
+
+[ext_resource type="Script" uid="uid://ci2l1bechwgcf" path="res://screens/credits/credits_roller.gd" id="1_ge2ed"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ge2ed"]
+
+[node name="CreditsRoller" type="PanelContainer" unique_id=1818392650]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ge2ed")
+script = ExtResource("1_ge2ed")

@@ -86,6 +86,11 @@ texture_margin_bottom = 16.0
 
 [resource]
 default_font = ExtResource("1_xgdp2")
+CreditsLabel/base_type = &"Label"
+CreditsLabel/colors/font_color = Color(0.12156863, 0.30980393, 0.30980393, 1)
+CreditsLabel/colors/font_outline_color = Color(0.90588236, 0.83137256, 0.827451, 1)
+CreditsLabel/constants/outline_size = 10
+CreditsLabel/font_sizes/font_size = 32
 GreenButton/base_type = &"Button"
 GreenButton/colors/font_color = Color(0.2, 0.06666667, 0.047058824, 1)
 GreenButton/colors/font_hover_color = Color(0.93333334, 0.84313726, 0.8156863, 1)

@@ -1,0 +1,291 @@
+[gd_scene format=3 uid="uid://berdivs13iqn4"]
+
+[ext_resource type="Script" uid="uid://bn1v84gadcew8" path="res://screens/credits/credits_screen.gd" id="1_dre0b"]
+[ext_resource type="Texture2D" uid="uid://hwqmvksab4lk" path="res://assets/tela-menu/bg-titulo.png" id="1_hjcvi"]
+[ext_resource type="PackedScene" uid="uid://esircl14mywp" path="res://objects/credits_roller/credits_roller.tscn" id="2_efxxi"]
+[ext_resource type="Script" uid="uid://c2d37oyheaj2e" path="res://objects/credits_roller/credits_container.gd" id="3_7e4p0"]
+[ext_resource type="Texture2D" uid="uid://dxklwux1tbyqo" path="res://assets/tela-menu/img-titulo.png" id="4_urlqr"]
+
+[node name="CreditsScreen" type="Control" unique_id=929341591]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dre0b")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1021415761]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_hjcvi")
+
+[node name="CreditsRoller" parent="." unique_id=2051139922 instance=ExtResource("2_efxxi")]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 380.0
+offset_right = 860.0
+offset_bottom = 720.0
+
+[node name="Logo" type="CenterContainer" parent="CreditsRoller" unique_id=28151550]
+visible = false
+layout_mode = 2
+script = ExtResource("3_7e4p0")
+metadata/_custom_type_script = "uid://c2d37oyheaj2e"
+
+[node name="TextureRect" type="TextureRect" parent="CreditsRoller/Logo" unique_id=718804512]
+layout_mode = 2
+texture = ExtResource("4_urlqr")
+
+[node name="Team" type="CenterContainer" parent="CreditsRoller" unique_id=1743609661]
+visible = false
+layout_mode = 2
+script = ExtResource("3_7e4p0")
+metadata/_custom_type_script = "uid://c2d37oyheaj2e"
+
+[node name="Label" type="Label" parent="CreditsRoller/Team" unique_id=1080304977]
+layout_mode = 2
+theme_type_variation = &"CreditsLabel"
+theme_override_font_sizes/font_size = 64
+text = "Um jogo por 
+Equipe Urutau!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Design" type="CenterContainer" parent="CreditsRoller" unique_id=269479381]
+visible = false
+layout_mode = 2
+script = ExtResource("3_7e4p0")
+metadata/_custom_type_script = "uid://c2d37oyheaj2e"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CreditsRoller/Design" unique_id=203850807]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="CreditsRoller/Design/VBoxContainer" unique_id=1788179723]
+layout_mode = 2
+theme_type_variation = &"CreditsLabel"
+theme_override_font_sizes/font_size = 48
+text = "Conceito e Game Design"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CreditsRoller/Design/VBoxContainer" unique_id=1770124582]
+layout_mode = 2
+theme_type_variation = &"CreditsLabel"
+text = "Gabriela Chaplin
+Lázaro Menezes
+Ulisses Manuel"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Art" type="CenterContainer" parent="CreditsRoller" unique_id=71603108]
+visible = false
+layout_mode = 2
+script = ExtResource("3_7e4p0")
+metadata/_custom_type_script = "uid://c2d37oyheaj2e"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CreditsRoller/Art" unique_id=844198809]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="CreditsRoller/Art/VBoxContainer" unique_id=1910910340]
+layout_mode = 2
+theme_type_variation = &"CreditsLabel"
+theme_override_font_sizes/font_size = 48
+text = "Arte"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CreditsRoller/Art/VBoxContainer" unique_id=834507986]
+layout_mode = 2
+theme_type_variation = &"CreditsLabel"
+text = "Gabriela Chaplin
+Ulisses Manuel
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Programming" type="CenterContainer" parent="CreditsRoller" unique_id=1221383107]
+visible = false
+layout_mode = 2
+script = ExtResource("3_7e4p0")
+metadata/_custom_type_script = "uid://c2d37oyheaj2e"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CreditsRoller/Programming" unique_id=904655418]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="CreditsRoller/Programming/VBoxContainer" unique_id=828571601]
+layout_mode = 2
+theme_type_variation = &"CreditsLabel"
+theme_override_font_sizes/font_size = 48
+text = "Programação"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CreditsRoller/Programming/VBoxContainer" unique_id=1752733266]
+layout_mode = 2
+theme_type_variation = &"CreditsLabel"
+text = "Lázaro Menezes
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ThirdParty" type="CenterContainer" parent="CreditsRoller" unique_id=945510274]
+visible = false
+layout_mode = 2
+script = ExtResource("3_7e4p0")
+metadata/_custom_type_script = "uid://c2d37oyheaj2e"
+
+[node name="Label" type="Label" parent="CreditsRoller/ThirdParty" unique_id=632749284]
+layout_mode = 2
+theme_type_variation = &"CreditsLabel"
+theme_override_font_sizes/font_size = 64
+text = "Terceiros"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ThirdParty_Music1" type="CenterContainer" parent="CreditsRoller" unique_id=1478345730]
+visible = false
+layout_mode = 2
+script = ExtResource("3_7e4p0")
+metadata/_custom_type_script = "uid://c2d37oyheaj2e"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CreditsRoller/ThirdParty_Music1" unique_id=303343908]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="CreditsRoller/ThirdParty_Music1/VBoxContainer" unique_id=59630152]
+layout_mode = 2
+theme_type_variation = &"CreditsLabel"
+theme_override_font_sizes/font_size = 48
+text = "Música"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CreditsRoller/ThirdParty_Music1/VBoxContainer" unique_id=1920194913]
+custom_minimum_size = Vector2(340, 0)
+layout_mode = 2
+theme_type_variation = &"CreditsLabel"
+text = "Making Up (soft Hip Hop) by shortiefoeva2
+https://freesound.org/s/412048/
+License: Creative Commons 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ThirdParty_Music2" type="CenterContainer" parent="CreditsRoller" unique_id=931530435]
+visible = false
+layout_mode = 2
+script = ExtResource("3_7e4p0")
+metadata/_custom_type_script = "uid://c2d37oyheaj2e"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CreditsRoller/ThirdParty_Music2" unique_id=715019011]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="CreditsRoller/ThirdParty_Music2/VBoxContainer" unique_id=2122528951]
+layout_mode = 2
+theme_type_variation = &"CreditsLabel"
+theme_override_font_sizes/font_size = 48
+text = "Música"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CreditsRoller/ThirdParty_Music2/VBoxContainer" unique_id=252415127]
+custom_minimum_size = Vector2(340, 0)
+layout_mode = 2
+theme_type_variation = &"CreditsLabel"
+text = "FightScene by Darkmast49
+https://freesound.org/s/157846/
+License: Creative Commons 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ThirdParty_Music3" type="CenterContainer" parent="CreditsRoller" unique_id=1750891131]
+visible = false
+layout_mode = 2
+script = ExtResource("3_7e4p0")
+metadata/_custom_type_script = "uid://c2d37oyheaj2e"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CreditsRoller/ThirdParty_Music3" unique_id=367910451]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="CreditsRoller/ThirdParty_Music3/VBoxContainer" unique_id=1658330458]
+layout_mode = 2
+theme_type_variation = &"CreditsLabel"
+theme_override_font_sizes/font_size = 48
+text = "Música"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CreditsRoller/ThirdParty_Music3/VBoxContainer" unique_id=1307263118]
+custom_minimum_size = Vector2(340, 0)
+layout_mode = 2
+theme_type_variation = &"CreditsLabel"
+text = "Nodens (Field Song) by axtoncrolley
+https://freesound.org/s/172707/
+License: Creative Commons 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ThirdParty_Thanks" type="CenterContainer" parent="CreditsRoller" unique_id=273503880]
+visible = false
+layout_mode = 2
+script = ExtResource("3_7e4p0")
+metadata/_custom_type_script = "uid://c2d37oyheaj2e"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CreditsRoller/ThirdParty_Thanks" unique_id=355267357]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="CreditsRoller/ThirdParty_Thanks/VBoxContainer" unique_id=728364483]
+layout_mode = 2
+theme_type_variation = &"CreditsLabel"
+theme_override_font_sizes/font_size = 48
+text = "Agradecimentos Especiais"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CreditsRoller/ThirdParty_Thanks/VBoxContainer" unique_id=1498226170]
+custom_minimum_size = Vector2(340, 0)
+layout_mode = 2
+theme_type_variation = &"CreditsLabel"
+text = "Débora, Fábio, Tumati 
+por ajudarem com playtests."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Thanks" type="CenterContainer" parent="CreditsRoller" unique_id=1016959372]
+visible = false
+layout_mode = 2
+script = ExtResource("3_7e4p0")
+view_time = 30.0
+metadata/_custom_type_script = "uid://c2d37oyheaj2e"
+
+[node name="Label" type="Label" parent="CreditsRoller/Thanks" unique_id=3722707]
+layout_mode = 2
+theme_type_variation = &"CreditsLabel"
+theme_override_font_sizes/font_size = 64
+text = "Obrigado por jogar!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Back" type="Button" parent="." unique_id=977525392]
+layout_mode = 0
+offset_left = 1615.0
+offset_top = 909.0
+offset_right = 1860.0
+offset_bottom = 1020.0
+theme_type_variation = &"RedButton"
+theme_override_font_sizes/font_size = 48
+text = "Voltar"
+
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
