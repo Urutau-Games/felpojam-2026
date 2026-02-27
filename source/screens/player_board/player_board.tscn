@@ -282,7 +282,21 @@ theme_type_variation = &"PaperContainer"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Game/MarginContainer/Control/Panel" unique_id=1747943703]
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 15
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Game/MarginContainer/Control/Panel/VBoxContainer2" unique_id=192922090]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Game/MarginContainer/Control/Panel/VBoxContainer2/HBoxContainer3" unique_id=1932598632]
+layout_mode = 2
+theme_type_variation = &"NotesLabel"
+text = "Dungeon:"
+
+[node name="DungeonLabel" type="Label" parent="Game/MarginContainer/Control/Panel/VBoxContainer2/HBoxContainer3" unique_id=999005623]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"NotesLabel"
+text = "0"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Game/MarginContainer/Control/Panel/VBoxContainer2" unique_id=13713384]
 layout_mode = 2
@@ -311,21 +325,6 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"NotesLabel"
 text = "3"
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="Game/MarginContainer/Control/Panel/VBoxContainer2" unique_id=192922090]
-visible = false
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Game/MarginContainer/Control/Panel/VBoxContainer2/HBoxContainer3" unique_id=1932598632]
-layout_mode = 2
-theme_type_variation = &"NotesLabel"
-text = "Dungeons concluídas: "
-
-[node name="FinishedDugeonsLabel" type="Label" parent="Game/MarginContainer/Control/Panel/VBoxContainer2/HBoxContainer3" unique_id=999005623]
-unique_name_in_owner = true
-layout_mode = 2
-theme_type_variation = &"NotesLabel"
-text = "0"
 
 [node name="Foreground" type="CanvasLayer" parent="." unique_id=586690456]
 layer = 3
@@ -435,6 +434,7 @@ text = "REINICIAR"
 bus = &"PlayerBoardEffects"
 
 [connection signal="command_placed" from="Game/MarginContainer/Control/CommandPanel" to="." method="_on_command_panel_command_placed"]
+[connection signal="mouse_entered" from="Foreground/Control" to="." method="_on_control_mouse_entered"]
 [connection signal="pressed" from="Foreground/Control/CleanButton" to="." method="_on_clean_button_pressed"]
 [connection signal="pressed" from="Foreground/Control/SendButton" to="." method="_on_send_button_pressed"]
 [connection signal="pressed" from="Foreground/Control/Restart" to="." method="_on_restart_pressed"]

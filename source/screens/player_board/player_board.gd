@@ -20,6 +20,7 @@ const CLICK_LOCKED: int = 5
 @onready var remaining_totems: Label = %RemainingTotems
 @onready var congrats_layer: CanvasLayer = %Congrats
 @onready var cursor_container: CanvasLayer = %CursorContainer
+@onready var dungeon_label: Label = %DungeonLabel
 
 @onready var clean_button: TextureButton = %CleanButton
 @onready var send_button: TextureButton = %SendButton
@@ -38,6 +39,9 @@ func _ready() -> void:
 	
 	GameManager.execution_started.connect(_on_execution_started)
 	GameManager.execution_finished.connect(_on_execution_finished)
+	
+	GameManager.new_run()
+	GameManager.run.start_current_dungeon()
 
 func _on_clean_button_pressed() -> void:
 	var tween := create_tween().set_ease(Tween.EASE_IN)
@@ -86,8 +90,9 @@ func _on_stamp_dropped(is_release = false) -> void:
 
 # TODO: Move to an observable approach
 func _process(_delta: float) -> void:
-	constructs_sent_label.text = str(GameManager.used_constructs)
-	remaining_totems.text = str(GameManager.totems_remaining)
+	dungeon_label.text = str(GameManager.run.current_dungeon + 1)
+	constructs_sent_label.text = str(GameManager.run.used_constructs)
+	remaining_totems.text = str(GameManager.run.remaining_totems)
 
 func _on_target_reached() -> void:
 	congrats_layer.visible = true
@@ -107,7 +112,7 @@ func _on_execution_finished() -> void:
 
 func _on_restart_pressed() -> void:
 	await _action_timer().timeout
-	# Restuart current dungeon
+	GameManager.run.start_current_dungeon()
 
 func _action_timer() -> SceneTreeTimer:
 	return get_tree().create_timer(action_button_delay)
@@ -118,3 +123,7 @@ func _play_sfx(stream: AudioStream) -> void:
 
 func _on_command_panel_command_placed() -> void:
 	_play_sfx(stamp_placed)
+
+func _on_control_mouse_entered() -> void:
+	if GameManager.active_stamp:
+		GameManager.release_stamp()

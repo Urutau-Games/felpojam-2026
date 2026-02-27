@@ -1,6 +1,8 @@
 extends Object
 class_name Constants
 
+const MAX_TOTEMS: int = 3
+
 const DUNGEON_WIDTH: int = 15
 const DUNGEON_HEIGHT: int = 5
 

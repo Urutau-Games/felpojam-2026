@@ -81,4 +81,4 @@ func _modulate_command(command_index: int, color: Color) -> void:
 
 #TODO: Move some logic to observable
 func _process(_delta: float) -> void:
-	place_totem_button.disabled = GameManager.totems_remaining <= 0
+	place_totem_button.disabled = GameManager.run.remaining_totems <= 0
