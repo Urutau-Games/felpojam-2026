@@ -13,7 +13,7 @@ config_version=5
 config/name="Ruínas de Krimbo"
 run/main_scene="uid://didjfi4wjm87h"
 config/features=PackedStringArray("4.6", "GL Compatibility")
-config/icon="uid://cn1up12kv5nsy"
+config/icon="uid://prb6t3xruwgi"
 
 [autoload]
 
