@@ -31,5 +31,10 @@ func _on_extras_pressed() -> void:
 	await _action_timer().timeout
 	SceneManager.transition_to(SceneManager.Scene.EXTRA)
 
+
+func _on_how_to_play_pressed() -> void:
+	await _action_timer().timeout
+	SceneManager.transition_to(SceneManager.Scene.INSTRUCTIONS)
+	
 func _action_timer() -> SceneTreeTimer:
 	return get_tree().create_timer(action_button_delay)

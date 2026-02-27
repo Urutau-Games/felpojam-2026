@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvl4tkda86ik7"
-path="res://.godot/imported/color_study.png-a16004f940c64dfdb1b482bc9b8bc3ca.ctex"
+uid="uid://vv6fpjfw7lfj"
+path="res://.godot/imported/ovl-como-jogar.png-531c397d4bba488eef4c0d429c2bd12c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tela-extra/full/color_study.png"
-dest_files=["res://.godot/imported/color_study.png-a16004f940c64dfdb1b482bc9b8bc3ca.ctex"]
+source_file="res://assets/tela-menu/ovl-como-jogar.png"
+dest_files=["res://.godot/imported/ovl-como-jogar.png-531c397d4bba488eef4c0d429c2bd12c.ctex"]
 
 [params]
 

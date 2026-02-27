@@ -8,7 +8,7 @@ offset_right = 245.0
 offset_bottom = 111.0
 theme_type_variation = &"RedButton"
 theme_override_font_sizes/font_size = 48
-text = "Voltar"
+text = "Menu"
 script = ExtResource("1_yuv6g")
 
 [node name="ActionButtonStreamPlayer" parent="." unique_id=984961628 instance=ExtResource("1_qw54u")]
