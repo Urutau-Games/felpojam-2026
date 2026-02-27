@@ -28,19 +28,16 @@ texture_margin_top = 16.0
 texture_margin_right = 12.0
 texture_margin_bottom = 16.0
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0arac"]
-load_path = "res://.godot/imported/obj-botao.png-792ba4eb818d8fc0fbd0098167acb893.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pefyd"]
-atlas = SubResource("CompressedTexture2D_0arac")
-region = Rect2(0, 0, 244, 112)
+[sub_resource type="AtlasTexture" id="AtlasTexture_d80jv"]
+atlas = ExtResource("1_d80jv")
+region = Rect2(0, 114, 244, 112)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_upuy7"]
-texture = SubResource("AtlasTexture_pefyd")
-texture_margin_left = 12.0
-texture_margin_top = 16.0
-texture_margin_right = 12.0
-texture_margin_bottom = 16.0
+texture = SubResource("AtlasTexture_d80jv")
+texture_margin_left = 24.0
+texture_margin_top = 24.0
+texture_margin_right = 24.0
+texture_margin_bottom = 24.0
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_611f8"]
 load_path = "res://.godot/imported/obj-botao.png-792ba4eb818d8fc0fbd0098167acb893.ctex"
@@ -70,19 +67,16 @@ texture_margin_top = 16.0
 texture_margin_right = 12.0
 texture_margin_bottom = 16.0
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pl0ij"]
-load_path = "res://.godot/imported/obj-botao.png-792ba4eb818d8fc0fbd0098167acb893.ctex"
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_mfaqg"]
-atlas = SubResource("CompressedTexture2D_pl0ij")
-region = Rect2(258, 0, 245, 112)
+atlas = ExtResource("1_d80jv")
+region = Rect2(258, 114, 245, 112)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yo0da"]
 texture = SubResource("AtlasTexture_mfaqg")
-texture_margin_left = 12.0
-texture_margin_top = 16.0
-texture_margin_right = 12.0
-texture_margin_bottom = 16.0
+texture_margin_left = 24.0
+texture_margin_top = 24.0
+texture_margin_right = 24.0
+texture_margin_bottom = 24.0
 
 [resource]
 default_font = ExtResource("1_xgdp2")
