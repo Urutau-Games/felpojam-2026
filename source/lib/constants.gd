@@ -37,6 +37,15 @@ const ROOM_EXTRA_4: StringName = &'W'
 const ROOM_EXTRA_5: StringName = &'V'
 const ROOM_EXTRA_6: StringName = &'U'
 
+const ROOM_CHEST: Array[StringName] = [
+	ROOM_EXTRA_1,
+	ROOM_EXTRA_2,
+	ROOM_EXTRA_3,
+	ROOM_EXTRA_4,
+	ROOM_EXTRA_5,
+	ROOM_EXTRA_6,
+]
+
 const ROOM_NAMES: Dictionary[StringName, String] = {
 	ROOM_ENTRANCE: "entrada",
 	ROOM_DESTINATION: "destino",

@@ -1,5 +1,7 @@
 extends Node
 
+signal extra_found(extra: String)
+
 const SEPARATOR: String = "|"
 const EXTRAS_CONFIG_PATH: String = "user://extras_config"
 
@@ -12,12 +14,18 @@ var available_extras: Array[MakingOf] = [
 	preload("res://resources/making_of/objects/sketches.tres")
 ]
 
+var discovered_extras: Array[MakingOf]:
+	get:
+		return available_extras.filter(func (e): return e.discovered)
+
 func _ready() -> void:
 	var discovered = load_settings()
 	
+	extra_found.connect(_on_extra_found)
+	
 	for extra in available_extras:
 		extra.discovered = discovered.has(extra.id)
-	
+
 func load_settings() -> Array:
 	var extras = []
 	
@@ -35,9 +43,23 @@ func save_settings() -> void:
 	file.close()
 
 func has_any() -> bool:
-	return available_extras.filter(func (e): return e.discovered).size()
+	return discovered_extras.size()
+
+func has(extra: String) -> bool:
+	return _map_discovered_extras().has(extra)
+
+func find_by_id(id: String) -> MakingOf:
+	for extra in available_extras:
+		if extra.id == id:
+			return extra
+			
+	return null
+
+func _on_extra_found(found_extra: String) -> void:
+	var extra = find_by_id(found_extra)
+	if extra:
+		extra.discovered = true
+		save_settings()
 
 func _map_discovered_extras() -> Array:
-	return available_extras\
-	.filter(func (e): return e.discovered)\
-	.map(func (e): return e.id)
+	return discovered_extras.map(func (e): return e.id)

@@ -7,6 +7,8 @@ const CLICK_LOCKED: int = 5
 @export var stamp_button_group: ButtonGroup
 @export var action_button_delay: float = 0.5
 
+@export var extra_alert_scene: PackedScene
+
 @export_group("SFX Streams")
 @export var execute_locked: AudioStream
 @export var execute_clicked: AudioStream
@@ -30,9 +32,17 @@ const CLICK_LOCKED: int = 5
 @onready var sfx_player: AudioStreamPlayer = $SFXPlayer
 @onready var congrats_particles: GPUParticles2D = $Congrats/CongratsParticles
 
+@onready var foreground: CanvasLayer = %Foreground
+
 func _ready() -> void:
 	MusicPlayer.play_planning_phase()
 	
+	_connect_signals()
+	
+	GameManager.new_run()
+	GameManager.run.start_current_dungeon()
+
+func _connect_signals() -> void:
 	GameManager.target_reached.connect(_on_target_reached)
 	GameManager.stamp_picked.connect(_on_stamp_picked)
 	GameManager.stamp_dropped.connect(_on_stamp_dropped)
@@ -40,8 +50,7 @@ func _ready() -> void:
 	GameManager.execution_started.connect(_on_execution_started)
 	GameManager.execution_finished.connect(_on_execution_finished)
 	
-	GameManager.new_run()
-	GameManager.run.start_current_dungeon()
+	ExtrasManager.extra_found.connect(_on_extra_found)
 
 func _on_clean_button_pressed() -> void:
 	var tween := create_tween().set_ease(Tween.EASE_IN)
@@ -116,6 +125,15 @@ func _on_execution_finished() -> void:
 func _on_restart_pressed() -> void:
 	await _action_timer().timeout
 	GameManager.run.start_current_dungeon()
+
+func _on_extra_found(extra: String) -> void:
+	var making_of = ExtrasManager.find_by_id(extra)
+	
+	if extra:
+		var alert = extra_alert_scene.instantiate()
+		alert.thumb = making_of.thumb
+		alert.title = making_of.title
+		foreground.add_child(alert)
 
 func _action_timer() -> SceneTreeTimer:
 	return get_tree().create_timer(action_button_delay)

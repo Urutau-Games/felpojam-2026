@@ -88,13 +88,17 @@ func execute(commands: Array[String]) -> void:
 		if not run.is_revealed():
 			run.reveal_current_room()
 
-		if _is_hazard():
+		if run.is_hazard():
 			command_failed.emit(command_index)
 			break
-		elif _is_target():
+		elif run.is_target():
 			command_finished.emit(command_index)
 			target_reached.emit()
 			break
+		elif run.is_chest():
+			ExtrasManager.extra_found.emit(run.current_room_content)
+			await get_tree().create_timer(0.2).timeout
+			run.make_current_room_empty()
 		else:
 			await get_tree().create_timer(0.5).timeout
 		
@@ -106,23 +110,11 @@ func execute(commands: Array[String]) -> void:
 	if command_index == commands.size():
 		run.back_to_start()
 
-func _on_command_failed(_command_index: int) -> void:
-	run.back_to_start()
-
-func _is_hazard() -> bool:
-	return run.is_hazard()
-
-func _is_target() -> bool:
-	return run.is_target()
-
-func _is_in_boundaries(room: Vector2i):
-	return run.dungeon.is_in_boundaries(room)
-
-func _has_monster() -> bool:
-	return run.has_monster()
-
 func new_run() -> void:
 	run = GameRun.new(loaded_dungeons, self)
+
+func _on_command_failed(_command_index: int) -> void:
+	run.back_to_start()
 
 #region Commands
 func _east() -> bool:
@@ -138,7 +130,7 @@ func _south() -> bool:
 	return run.execute_move(Constants.SOUTH_MOVEMENT)
 
 func _disarm() -> bool:
-	if _has_monster():
+	if run.has_monster():
 		return false
 		
 	for possible_move in Constants.ADJACENT_ROOMS:
@@ -147,7 +139,7 @@ func _disarm() -> bool:
 	return true
 	
 func _scan() -> bool:
-	if _has_monster():
+	if run.has_monster():
 		return false
 		
 	var found_items: Dictionary[StringName, int] = {}
@@ -169,7 +161,7 @@ func _totem() -> bool:
 	return run.place_totem()
 	
 func _attack() -> bool:
-	if _has_monster():
+	if run.has_monster():
 		run.make_current_room_empty()
 	
 	return true
@@ -199,7 +191,11 @@ class Dungeon:
 				var destination := line.find(Constants.DESTINATION_CHAR)
 				if destination > -1:
 					target_position = Vector2i(rooms.size(), destination)
-				
+			
+			for extra in Constants.ROOM_CHEST:
+				if ExtrasManager.has(extra):
+					line = line.replace(extra, Constants.ROOM_EMPTY)
+			
 			rooms.push_back(line.split())
 	
 	func is_in_boundaries(room: Vector2i):
@@ -256,6 +252,9 @@ class GameRun:
 
 	func is_target() -> bool:
 		return current_room_content == Constants.ROOM_DESTINATION
+
+	func is_chest() -> bool:
+		return Constants.ROOM_CHEST.has(current_room_content)
 
 	func has_monster() -> bool:
 		return current_room_content == Constants.ROOM_MONSTER

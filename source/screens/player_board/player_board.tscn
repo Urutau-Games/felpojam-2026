@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://doer4mb2oveya" path="res://objects/dungeon_map/dungeon_map.tscn" id="3_crvft"]
 [ext_resource type="Texture2D" uid="uid://ugj80p4vf5s7" path="res://assets/tela-comandos/img-estojo.png" id="3_fdkoj"]
 [ext_resource type="Script" uid="uid://qqr0vx0x0wtd" path="res://screens/player_board/command_panel.gd" id="3_gmcyl"]
+[ext_resource type="PackedScene" uid="uid://cpxgsoecab8oy" path="res://objects/extra_alert/extra_alert.tscn" id="3_qqeyr"]
 [ext_resource type="AudioStream" uid="uid://bdn2wcjertimc" path="res://assets/audio/sfx/button_locked.wav" id="3_y0ir0"]
 [ext_resource type="AudioStream" uid="uid://8hkef4lyrj13" path="res://assets/audio/sfx/button_click.wav" id="4_fhtu7"]
 [ext_resource type="PackedScene" uid="uid://bti2k0arongr" path="res://objects/back_button/back.tscn" id="4_nv8fb"]
@@ -96,6 +97,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xkjum")
 stamp_button_group = ExtResource("5_a7888")
+extra_alert_scene = ExtResource("3_qqeyr")
 execute_locked = ExtResource("3_y0ir0")
 execute_clicked = ExtResource("4_fhtu7")
 cancel_clicked = ExtResource("4_fhtu7")
@@ -360,6 +362,7 @@ theme_type_variation = &"NotesLabel"
 text = "3"
 
 [node name="Foreground" type="CanvasLayer" parent="." unique_id=586690456]
+unique_name_in_owner = true
 layer = 3
 
 [node name="Control" type="Control" parent="Foreground" unique_id=1569884245]
