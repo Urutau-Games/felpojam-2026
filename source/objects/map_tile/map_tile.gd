@@ -14,6 +14,7 @@ class_name MapTile
 @export var hole_icon: Texture2D
 @export var trap_icon: Texture2D
 @export var exit_icon: Texture2D
+@export var chest_icon: Texture2D
 
 @onready var background: TextureRect = %Background
 @onready var icon: TextureRect = %Icon
@@ -23,7 +24,13 @@ class_name MapTile
 	Constants.ROOM_HOLE: hole_icon,
 	Constants.ROOM_MONSTER: monster_icon,
 	Constants.ROOM_TRAP: trap_icon,
-	Constants.ROOM_DESTINATION: null
+	Constants.ROOM_DESTINATION: null,
+	Constants.ROOM_EXTRA_1: chest_icon,
+	Constants.ROOM_EXTRA_2: chest_icon,
+	Constants.ROOM_EXTRA_3: chest_icon,
+	Constants.ROOM_EXTRA_4: chest_icon,
+	Constants.ROOM_EXTRA_5: chest_icon,
+	Constants.ROOM_EXTRA_6: chest_icon,
 }
 
 func _ready() -> void:

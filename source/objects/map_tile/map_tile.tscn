@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b3l4vklh1yhn2" path="res://assets/tela-comandos/grid_tile_resources/hole_icon.tres" id="7_r1jn3"]
 [ext_resource type="Texture2D" uid="uid://cjwbfeq4nxt25" path="res://assets/tela-comandos/grid_tile_resources/trap_icon.tres" id="8_av8tc"]
 [ext_resource type="Texture2D" uid="uid://dqj13opmfxgdw" path="res://assets/tela-comandos/grid_tile_resources/exit_icon.tres" id="9_h5fix"]
+[ext_resource type="Texture2D" uid="uid://c43yh6p3rr44f" path="res://assets/tela-comandos/grid_tile_resources/chest_icon.tres" id="10_av8tc"]
 
 [node name="MapTile" type="Control" unique_id=1208371292]
 custom_minimum_size = Vector2(60, 60)
@@ -23,6 +24,7 @@ monster_icon = ExtResource("3_bmbhx")
 hole_icon = ExtResource("7_r1jn3")
 trap_icon = ExtResource("8_av8tc")
 exit_icon = ExtResource("9_h5fix")
+chest_icon = ExtResource("10_av8tc")
 
 [node name="Background" type="TextureRect" parent="." unique_id=273534539]
 unique_name_in_owner = true

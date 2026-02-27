@@ -1,7 +1,14 @@
 [gd_resource type="Resource" script_class="MakingOf" format=3 uid="uid://cr0xmuwmsj86k"]
 
+[ext_resource type="Texture2D" uid="uid://ce4ol8elt17lr" path="res://assets/tela-extra/full/playtest.png" id="1_jh4ke"]
 [ext_resource type="Script" uid="uid://bdckme0mpti6s" path="res://resources/making_of/making_of.gd" id="1_srehg"]
+[ext_resource type="Texture2D" uid="uid://ck655mkrcaenv" path="res://assets/tela-extra/thumbnails/playtest.png" id="3_h5uxg"]
 
 [resource]
 script = ExtResource("1_srehg")
+id = "W"
+thumb = ExtResource("3_h5uxg")
+overlay = ExtResource("1_jh4ke")
+title = "Playtest"
+description = "Primeiros testes das mecânicas, utilizando planilhas."
 metadata/_custom_type_script = "uid://bdckme0mpti6s"

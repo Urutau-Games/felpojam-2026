@@ -24,21 +24,33 @@ const COMMAND_DISARM: StringName = &'disarm'
 const ROOM_ENTRANCE: StringName = &'E'
 const ROOM_DESTINATION: StringName = &'D'
 const ROOM_EMPTY: StringName = &'1'
-const ROOM_CHEST: StringName = &'2'
+
 const ROOM_HOLE: StringName = &'4'
 const ROOM_MONSTER: StringName = &'5'
 const ROOM_TRAP: StringName = &'6'
 const ROOM_TOTEM: StringName = &'T'
 
+const ROOM_EXTRA_1: StringName = &'Z'
+const ROOM_EXTRA_2: StringName = &'Y'
+const ROOM_EXTRA_3: StringName = &'X'
+const ROOM_EXTRA_4: StringName = &'W'
+const ROOM_EXTRA_5: StringName = &'V'
+const ROOM_EXTRA_6: StringName = &'U'
+
 const ROOM_NAMES: Dictionary[StringName, String] = {
 	ROOM_ENTRANCE: "entrada",
 	ROOM_DESTINATION: "destino",
 	ROOM_EMPTY: "vazio",
-	ROOM_CHEST: "baú",
 	ROOM_HOLE: "buraco",
 	ROOM_MONSTER: "monstro",
 	ROOM_TRAP: "armadilha",
-	ROOM_TOTEM: "totem"
+	ROOM_TOTEM: "totem",
+	ROOM_EXTRA_1: "baú",
+	ROOM_EXTRA_2: "baú",
+	ROOM_EXTRA_3: "baú",
+	ROOM_EXTRA_4: "baú",
+	ROOM_EXTRA_5: "baú",
+	ROOM_EXTRA_6: "baú"
 }
 
 const ROOM_HAZARDS: Array[StringName] = [
@@ -49,7 +61,13 @@ const ROOM_HAZARDS: Array[StringName] = [
 const SCANNEABLE_ITEMS: Array[StringName] = [
 	ROOM_TRAP,
 	ROOM_HOLE,
-	ROOM_MONSTER
+	ROOM_MONSTER,
+	ROOM_EXTRA_1,
+	ROOM_EXTRA_2,
+	ROOM_EXTRA_3,
+	ROOM_EXTRA_4,
+	ROOM_EXTRA_5,
+	ROOM_EXTRA_6
 ]
 
 const MAX_COMMANDS: int = 10

@@ -4,7 +4,7 @@ extends AudioStreamPlayer
 func _ready() -> void:
 	var parent = get_parent()
 	
-	if parent and parent is Button:
+	if parent and parent is BaseButton:
 		parent.button_down.connect(_on_pressed)
 	
 func _on_pressed() -> void:

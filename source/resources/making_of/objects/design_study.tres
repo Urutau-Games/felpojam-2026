@@ -1,7 +1,14 @@
 [gd_resource type="Resource" script_class="MakingOf" format=3 uid="uid://de4ypmi0vq7go"]
 
 [ext_resource type="Script" uid="uid://bdckme0mpti6s" path="res://resources/making_of/making_of.gd" id="1_mdcmq"]
+[ext_resource type="Texture2D" uid="uid://8r7jerscq8yg" path="res://assets/tela-extra/full/design_study.png" id="1_udrfl"]
+[ext_resource type="Texture2D" uid="uid://c3l6k2b5bxwyf" path="res://assets/tela-extra/thumbnails/design_study.png" id="3_b122r"]
 
 [resource]
 script = ExtResource("1_mdcmq")
+id = "X"
+thumb = ExtResource("3_b122r")
+overlay = ExtResource("1_udrfl")
+title = "Estudo de Design"
+description = "Estudo de design para a tela principal de jogo."
 metadata/_custom_type_script = "uid://bdckme0mpti6s"
