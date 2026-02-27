@@ -33,6 +33,7 @@ offset_bottom = 720.0
 
 [node name="Logo" type="CenterContainer" parent="CreditsRoller" unique_id=28151550]
 visible = false
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 script = ExtResource("3_7e4p0")
 metadata/_custom_type_script = "uid://c2d37oyheaj2e"
@@ -43,6 +44,7 @@ texture = ExtResource("4_urlqr")
 
 [node name="Team" type="CenterContainer" parent="CreditsRoller" unique_id=1743609661]
 visible = false
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 script = ExtResource("3_7e4p0")
 metadata/_custom_type_script = "uid://c2d37oyheaj2e"
@@ -58,6 +60,7 @@ vertical_alignment = 1
 
 [node name="Design" type="CenterContainer" parent="CreditsRoller" unique_id=269479381]
 visible = false
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 script = ExtResource("3_7e4p0")
 metadata/_custom_type_script = "uid://c2d37oyheaj2e"
@@ -85,6 +88,7 @@ vertical_alignment = 1
 
 [node name="Art" type="CenterContainer" parent="CreditsRoller" unique_id=71603108]
 visible = false
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 script = ExtResource("3_7e4p0")
 metadata/_custom_type_script = "uid://c2d37oyheaj2e"
@@ -112,6 +116,7 @@ vertical_alignment = 1
 
 [node name="Programming" type="CenterContainer" parent="CreditsRoller" unique_id=1221383107]
 visible = false
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 script = ExtResource("3_7e4p0")
 metadata/_custom_type_script = "uid://c2d37oyheaj2e"
@@ -138,6 +143,7 @@ vertical_alignment = 1
 
 [node name="ThirdParty" type="CenterContainer" parent="CreditsRoller" unique_id=945510274]
 visible = false
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 script = ExtResource("3_7e4p0")
 metadata/_custom_type_script = "uid://c2d37oyheaj2e"
@@ -152,6 +158,7 @@ vertical_alignment = 1
 
 [node name="ThirdParty_Music1" type="CenterContainer" parent="CreditsRoller" unique_id=1478345730]
 visible = false
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 script = ExtResource("3_7e4p0")
 metadata/_custom_type_script = "uid://c2d37oyheaj2e"
@@ -181,6 +188,7 @@ autowrap_mode = 2
 
 [node name="ThirdParty_Music2" type="CenterContainer" parent="CreditsRoller" unique_id=931530435]
 visible = false
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 script = ExtResource("3_7e4p0")
 metadata/_custom_type_script = "uid://c2d37oyheaj2e"
@@ -210,6 +218,7 @@ autowrap_mode = 2
 
 [node name="ThirdParty_Music3" type="CenterContainer" parent="CreditsRoller" unique_id=1750891131]
 visible = false
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 script = ExtResource("3_7e4p0")
 metadata/_custom_type_script = "uid://c2d37oyheaj2e"
@@ -238,6 +247,7 @@ vertical_alignment = 1
 
 [node name="ThirdParty_Thanks" type="CenterContainer" parent="CreditsRoller" unique_id=273503880]
 visible = false
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 script = ExtResource("3_7e4p0")
 metadata/_custom_type_script = "uid://c2d37oyheaj2e"
@@ -265,6 +275,7 @@ vertical_alignment = 1
 
 [node name="Thanks" type="CenterContainer" parent="CreditsRoller" unique_id=1016959372]
 visible = false
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 script = ExtResource("3_7e4p0")
 view_time = 30.0

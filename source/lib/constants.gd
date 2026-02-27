@@ -63,3 +63,11 @@ const ADJACENT_ROOMS: Array[Vector2i] = [
 	Constants.NORTH_MOVEMENT, 
 	Constants.SOUTH_MOVEMENT
 ]
+
+const MUSIC_VOLUME_KEY: String = "music_volume"
+const SFX_VOLUME_KEY: String = "sfx_volume"
+
+const DEFAULT_AUDIO_SETTINGS: Dictionary[StringName, float] = {
+	MUSIC_VOLUME_KEY: 1,
+	SFX_VOLUME_KEY: 1
+}

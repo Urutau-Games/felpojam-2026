@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://esircl14mywp"]
 
-[ext_resource type="Script" uid="uid://ci2l1bechwgcf" path="res://screens/credits/credits_roller.gd" id="1_ge2ed"]
+[ext_resource type="Script" uid="uid://ci2l1bechwgcf" path="res://objects/credits_roller/credits_roller.gd" id="1_ge2ed"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ge2ed"]
 

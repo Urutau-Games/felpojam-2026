@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://djsyyoouhh8hb"]
+
+[ext_resource type="Texture2D" uid="uid://hwqmvksab4lk" path="res://assets/tela-menu/bg-titulo.png" id="1_bnatf"]
+[ext_resource type="Script" uid="uid://bujhkx3mvbmur" path="res://screens/options/options_screen.gd" id="1_grs5g"]
+
+[node name="OptionsScreen" type="Control" unique_id=1419411698]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_grs5g")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=364257849]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_bnatf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=510698127]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 380.0
+offset_right = 800.0
+offset_bottom = 420.0
+theme_override_constants/separation = 50
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=2118614156]
+layout_mode = 2
+theme_type_variation = &"CreditsLabel"
+theme_override_font_sizes/font_size = 48
+text = "Opções"
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer" unique_id=1448130753]
+layout_mode = 2
+theme_override_constants/h_separation = 50
+theme_override_constants/v_separation = 30
+columns = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer" unique_id=1845544815]
+layout_mode = 2
+theme_type_variation = &"CreditsLabel"
+theme_override_font_sizes/font_size = 32
+text = "Música"
+vertical_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="VBoxContainer/GridContainer" unique_id=1434362955]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_type_variation = &"OptionsSlider"
+max_value = 1.0
+step = 0.01
+value = 1.0
+tick_count = 5
+ticks_on_borders = true
+
+[node name="Label2" type="Label" parent="VBoxContainer/GridContainer" unique_id=661121463]
+layout_mode = 2
+theme_type_variation = &"CreditsLabel"
+theme_override_font_sizes/font_size = 32
+text = "Efeitos"
+vertical_alignment = 1
+
+[node name="EffectsSlider" type="HSlider" parent="VBoxContainer/GridContainer" unique_id=625053814]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_type_variation = &"OptionsSlider"
+max_value = 1.0
+step = 0.01
+tick_count = 5
+ticks_on_borders = true
+
+[node name="Back" type="Button" parent="VBoxContainer" unique_id=58660155]
+custom_minimum_size = Vector2(245, 111)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"RedButton"
+theme_override_font_sizes/font_size = 48
+text = "Voltar"
+
+[connection signal="drag_ended" from="VBoxContainer/GridContainer/MusicSlider" to="." method="_on_any_slider_drag_ended"]
+[connection signal="value_changed" from="VBoxContainer/GridContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="drag_ended" from="VBoxContainer/GridContainer/EffectsSlider" to="." method="_on_any_slider_drag_ended"]
+[connection signal="value_changed" from="VBoxContainer/GridContainer/EffectsSlider" to="." method="_on_effects_slider_value_changed"]
+[connection signal="pressed" from="VBoxContainer/Back" to="." method="_on_back_pressed"]

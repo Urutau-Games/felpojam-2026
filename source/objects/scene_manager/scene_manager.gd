@@ -4,13 +4,15 @@ enum Scene{
 	TITLE,
 	PLAY,
 	INSTRUCTIONS,
-	CREDITS
+	CREDITS,
+	OPTIONS
 }
 
 var _scenes: Dictionary[Scene, PackedScene] = {
 	Scene.TITLE: preload("res://screens/title/title_screen.tscn"),
 	Scene.PLAY: preload("res://screens/player_board/player_board.tscn"),
-	Scene.CREDITS: preload("res://screens/credits/credits_screen.tscn")
+	Scene.CREDITS: preload("res://screens/credits/credits_screen.tscn"),
+	Scene.OPTIONS: preload("res://screens/options/options_screen.tscn")
 }
 
 var _spawn_position: Vector2

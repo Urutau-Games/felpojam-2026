@@ -11,3 +11,7 @@ func _on_exit_pressed() -> void:
 
 func _on_credits_pressed() -> void:
 	SceneManager.transition_to(SceneManager.Scene.CREDITS)
+
+
+func _on_options_pressed() -> void:
+	SceneManager.transition_to(SceneManager.Scene.OPTIONS)

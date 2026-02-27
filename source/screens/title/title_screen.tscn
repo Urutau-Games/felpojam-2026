@@ -73,6 +73,7 @@ theme_override_font_sizes/font_size = 32
 text = "Créditos"
 
 [node name="Extras" type="Button" parent="Others" unique_id=1125773817]
+visible = false
 custom_minimum_size = Vector2(245, 90)
 layout_mode = 2
 theme_type_variation = &"GreenButton"
@@ -81,4 +82,5 @@ text = "Extras"
 
 [connection signal="pressed" from="PlayAndExit/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="PlayAndExit/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Others/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="Others/Credits" to="." method="_on_credits_pressed"]
