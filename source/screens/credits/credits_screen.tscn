@@ -30,11 +30,10 @@ layout_mode = 0
 offset_left = 200.0
 offset_top = 380.0
 offset_right = 860.0
-offset_bottom = 720.0
+offset_bottom = 990.0
 
 [node name="Logo" type="CenterContainer" parent="CreditsRoller" unique_id=28151550]
 visible = false
-modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 script = ExtResource("3_7e4p0")
 metadata/_custom_type_script = "uid://c2d37oyheaj2e"
@@ -45,7 +44,6 @@ texture = ExtResource("4_urlqr")
 
 [node name="Team" type="CenterContainer" parent="CreditsRoller" unique_id=1743609661]
 visible = false
-modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 script = ExtResource("3_7e4p0")
 metadata/_custom_type_script = "uid://c2d37oyheaj2e"
@@ -61,7 +59,6 @@ vertical_alignment = 1
 
 [node name="Design" type="CenterContainer" parent="CreditsRoller" unique_id=269479381]
 visible = false
-modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 script = ExtResource("3_7e4p0")
 metadata/_custom_type_script = "uid://c2d37oyheaj2e"
@@ -89,7 +86,6 @@ vertical_alignment = 1
 
 [node name="Art" type="CenterContainer" parent="CreditsRoller" unique_id=71603108]
 visible = false
-modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 script = ExtResource("3_7e4p0")
 metadata/_custom_type_script = "uid://c2d37oyheaj2e"
@@ -117,7 +113,6 @@ vertical_alignment = 1
 
 [node name="Programming" type="CenterContainer" parent="CreditsRoller" unique_id=1221383107]
 visible = false
-modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 script = ExtResource("3_7e4p0")
 metadata/_custom_type_script = "uid://c2d37oyheaj2e"
@@ -144,7 +139,6 @@ vertical_alignment = 1
 
 [node name="ThirdParty" type="CenterContainer" parent="CreditsRoller" unique_id=945510274]
 visible = false
-modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 script = ExtResource("3_7e4p0")
 metadata/_custom_type_script = "uid://c2d37oyheaj2e"
@@ -159,7 +153,6 @@ vertical_alignment = 1
 
 [node name="ThirdParty_Music1" type="CenterContainer" parent="CreditsRoller" unique_id=1478345730]
 visible = false
-modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 script = ExtResource("3_7e4p0")
 metadata/_custom_type_script = "uid://c2d37oyheaj2e"
@@ -182,35 +175,9 @@ layout_mode = 2
 theme_type_variation = &"CreditsLabel"
 text = "Making Up (soft Hip Hop) by shortiefoeva2
 https://freesound.org/s/412048/
-License: Creative Commons 0"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
+License: Creative Commons 0
 
-[node name="ThirdParty_Music2" type="CenterContainer" parent="CreditsRoller" unique_id=931530435]
-visible = false
-modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-script = ExtResource("3_7e4p0")
-metadata/_custom_type_script = "uid://c2d37oyheaj2e"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CreditsRoller/ThirdParty_Music2" unique_id=715019011]
-layout_mode = 2
-theme_override_constants/separation = 30
-
-[node name="Label" type="Label" parent="CreditsRoller/ThirdParty_Music2/VBoxContainer" unique_id=2122528951]
-layout_mode = 2
-theme_type_variation = &"CreditsLabel"
-theme_override_font_sizes/font_size = 48
-text = "Música"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label2" type="Label" parent="CreditsRoller/ThirdParty_Music2/VBoxContainer" unique_id=252415127]
-custom_minimum_size = Vector2(340, 0)
-layout_mode = 2
-theme_type_variation = &"CreditsLabel"
-text = "FightScene by Darkmast49
+FightScene by Darkmast49
 https://freesound.org/s/157846/
 License: Creative Commons 0"
 horizontal_alignment = 1
@@ -219,7 +186,6 @@ autowrap_mode = 2
 
 [node name="ThirdParty_Music3" type="CenterContainer" parent="CreditsRoller" unique_id=1750891131]
 visible = false
-modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 script = ExtResource("3_7e4p0")
 metadata/_custom_type_script = "uid://c2d37oyheaj2e"
@@ -246,9 +212,105 @@ License: Creative Commons 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="ThirdParty_SFX1" type="CenterContainer" parent="CreditsRoller" unique_id=345913958]
+visible = false
+layout_mode = 2
+script = ExtResource("3_7e4p0")
+metadata/_custom_type_script = "uid://c2d37oyheaj2e"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CreditsRoller/ThirdParty_SFX1" unique_id=277403999]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="CreditsRoller/ThirdParty_SFX1/VBoxContainer" unique_id=1891300909]
+layout_mode = 2
+theme_type_variation = &"CreditsLabel"
+theme_override_font_sizes/font_size = 48
+text = "Efeitos Sonoros"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CreditsRoller/ThirdParty_SFX1/VBoxContainer" unique_id=23817007]
+custom_minimum_size = Vector2(340, 0)
+layout_mode = 2
+theme_type_variation = &"CreditsLabel"
+text = "FOLYProp-Samsung Galaxy Smartphone, CU_Sticker, Peel Off_Nicholas Judy_TDC 
+by Designerschoice
+https://freesound.org/people/designerschoice/sounds/807636/
+License: Creative Commons 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ThirdParty_SFX2" type="CenterContainer" parent="CreditsRoller" unique_id=172158026]
+visible = false
+layout_mode = 2
+script = ExtResource("3_7e4p0")
+metadata/_custom_type_script = "uid://c2d37oyheaj2e"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CreditsRoller/ThirdParty_SFX2" unique_id=1905575244]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="CreditsRoller/ThirdParty_SFX2/VBoxContainer" unique_id=1089083241]
+layout_mode = 2
+theme_type_variation = &"CreditsLabel"
+theme_override_font_sizes/font_size = 48
+text = "Efeitos Sonoros"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CreditsRoller/ThirdParty_SFX2/VBoxContainer" unique_id=1702845386]
+custom_minimum_size = Vector2(340, 0)
+layout_mode = 2
+theme_type_variation = &"CreditsLabel"
+text = "Projector Button Push.wav by GreekIrish
+https://freesound.org/people/GreekIrish/sounds/254713/
+License: Creative Commons 0
+
+Clay Pottery Drop ’n’ Break by Kinoton
+https://freesound.org/people/Kinoton/sounds/399080/
+License: Creative Commons 0
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ThirdParty_Font" type="CenterContainer" parent="CreditsRoller" unique_id=780410503]
+visible = false
+layout_mode = 2
+script = ExtResource("3_7e4p0")
+metadata/_custom_type_script = "uid://c2d37oyheaj2e"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CreditsRoller/ThirdParty_Font" unique_id=1707054876]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="CreditsRoller/ThirdParty_Font/VBoxContainer" unique_id=1412559971]
+layout_mode = 2
+theme_type_variation = &"CreditsLabel"
+theme_override_font_sizes/font_size = 48
+text = "Fonte"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CreditsRoller/ThirdParty_Font/VBoxContainer" unique_id=1901171752]
+custom_minimum_size = Vector2(340, 0)
+layout_mode = 2
+theme_type_variation = &"CreditsLabel"
+text = "Halogen by JLH Fonts
+https://www.dafont.com/pt/halogen.font?text=halogen
+License: Creative Commons 0
+
+Modern Antiqua
+https://www.dafont.com/pt/modern-antiqua.font?l[]=10
+License: Creative Commons 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
 [node name="ThirdParty_Thanks" type="CenterContainer" parent="CreditsRoller" unique_id=273503880]
 visible = false
-modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 script = ExtResource("3_7e4p0")
 metadata/_custom_type_script = "uid://c2d37oyheaj2e"
@@ -270,13 +332,13 @@ custom_minimum_size = Vector2(340, 0)
 layout_mode = 2
 theme_type_variation = &"CreditsLabel"
 text = "Débora, Fábio, Tumati 
-por ajudarem com playtests."
+por ajudarem com testes
+nos estágios iniciais."
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Thanks" type="CenterContainer" parent="CreditsRoller" unique_id=1016959372]
 visible = false
-modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 script = ExtResource("3_7e4p0")
 view_time = 30.0
