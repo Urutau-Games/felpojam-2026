@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="MakingOf" format=3 uid="uid://c02eldqac6q5m"]
 
 [ext_resource type="Script" uid="uid://bdckme0mpti6s" path="res://resources/making_of/making_of.gd" id="1_7cwvu"]
-[ext_resource type="Texture2D" uid="uid://435m04n64nm3" path="res://assets/tela-extra/full/sketches.png" id="1_woera"]
+[ext_resource type="Texture2D" uid="uid://bdy2kyt2d2wiu" path="res://assets/tela-extra/full/sketches.png" id="1_woera"]
 [ext_resource type="Texture2D" uid="uid://b4ncmvrg105pf" path="res://assets/tela-extra/thumbnails/sketches.png" id="2_p2611"]
 
 [resource]
