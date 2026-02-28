@@ -95,11 +95,12 @@ func execute(commands: Array[String]) -> void:
 			command_finished.emit(command_index)
 			target_reached.emit()
 			break
-		elif run.is_chest():
-			ExtrasManager.extra_found.emit(run.current_room_content)
-			await get_tree().create_timer(0.2).timeout
-			run.make_current_room_empty()
 		else:
+			if run.is_chest():
+				ExtrasManager.extra_found.emit(run.current_room_content)
+				await get_tree().create_timer(0.5).timeout
+				run.make_current_room_empty()
+			
 			await get_tree().create_timer(0.5).timeout
 		
 			command_finished.emit(command_index)
