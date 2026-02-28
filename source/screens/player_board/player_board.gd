@@ -64,6 +64,8 @@ func _on_clean_button_pressed() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("drop_stamp"):
 		GameManager.release_stamp()
+	if event.is_action_released("erase_command"):
+		command_panel.erase()
 
 func _on_send_button_pressed() -> void:
 	if command_panel.is_empty():
@@ -150,3 +152,7 @@ func _on_command_panel_command_placed() -> void:
 func _on_control_mouse_entered() -> void:
 	if GameManager.active_stamp:
 		GameManager.release_stamp()
+
+
+func _on_erase_button_pressed() -> void:
+	command_panel.erase()

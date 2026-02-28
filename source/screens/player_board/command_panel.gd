@@ -7,7 +7,7 @@ signal command_placed()
 @onready var place_totem_button: TextureButton = %PlaceTotemButton
 
 var _used_slots: int = 0
-var _commands: Array[String] = []
+var _commands: Array[StampData] = []
 
 const GAMEPLAY_HEIGHT: float = 724
 const INSERT_HEIGHT: float = 850
@@ -42,7 +42,7 @@ func _place_command(stamp_data: StampData) -> void:
 		
 		_used_slots += stamp_data.command_size
 		
-		_commands.push_back(stamp_data.command)
+		_commands.push_back(stamp_data)
 		
 		command_placed.emit()
 		
@@ -60,7 +60,17 @@ func clear() -> void:
 		c.queue_free()
 
 func send() -> void:
-	_insert().tween_callback(GameManager.execute.bind(_commands))
+	var mapped_commands = _commands.map(func (c: StampData): return c.command)
+	var commands: Array[String] = Array(mapped_commands, TYPE_STRING, "", null)
+	
+	_insert().tween_callback(GameManager.execute.bind(commands))
+
+func erase() -> void:
+	var removed: StampData = _commands.pop_back()
+	
+	if removed:
+		_used_slots -= removed.command_size
+		command_grid.get_children()[-1].queue_free()
 
 func is_empty() -> bool:
 	return remaining_slots == Constants.MAX_COMMANDS

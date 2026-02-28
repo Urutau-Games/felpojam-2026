@@ -41,6 +41,7 @@
 [ext_resource type="Texture2D" uid="uid://d2qlrlqy3p8du" path="res://assets/tela-comandos/img-papel.png" id="31_xvhie"]
 [ext_resource type="Texture2D" uid="uid://b8acy6h0ngds6" path="res://assets/tela-comandos/obj-botao-exe-del.png" id="33_ew4rn"]
 [ext_resource type="PackedScene" uid="uid://bt5drwxhb4p6r" path="res://objects/button_audio_stream_player/action_button_stream_player.tscn" id="36_2v2a8"]
+[ext_resource type="Script" uid="uid://dmngpk1wx0xpv" path="res://objects/button_audio_stream_player/button_audio_stream_player.gd" id="37_15ldk"]
 [ext_resource type="Texture2D" uid="uid://bs7cidj8027ql" path="res://assets/tela-comandos/grid_tile_resources/revealed_background.tres" id="41_fhtu7"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xvhie"]
@@ -307,6 +308,22 @@ theme_override_constants/h_separation = 1
 theme_override_constants/v_separation = 0
 columns = 10
 
+[node name="EraseButton" type="Button" parent="Game/MarginContainer/Control" unique_id=1733938986]
+layout_mode = 0
+offset_left = 1363.0
+offset_top = 715.0
+offset_right = 1423.0
+offset_bottom = 775.0
+theme_type_variation = &"RedButton"
+theme_override_font_sizes/font_size = 24
+text = "X"
+
+[node name="ButtonAudioStreamPlayer" type="AudioStreamPlayer" parent="Game/MarginContainer/Control/EraseButton" unique_id=142599]
+stream = ExtResource("3_y0ir0")
+bus = &"PlayerBoardEffects"
+script = ExtResource("37_15ldk")
+metadata/_custom_type_script = "uid://dmngpk1wx0xpv"
+
 [node name="Panel" type="PanelContainer" parent="Game/MarginContainer/Control" unique_id=19030906]
 layout_mode = 0
 offset_left = 1440.0
@@ -428,7 +445,7 @@ theme_type_variation = &"GreenButton"
 theme_override_font_sizes/font_size = 32
 text = "Reiniciar"
 
-[node name="ActionButtonStreamPlayer" parent="Foreground/Control/Restart" unique_id=984961628 instance=ExtResource("36_2v2a8")]
+[node name="ActionButtonStreamPlayer" parent="Foreground/Control/Restart" unique_id=1112484537 instance=ExtResource("36_2v2a8")]
 
 [node name="CursorContainer" type="CanvasLayer" parent="." unique_id=1342038296]
 unique_name_in_owner = true
@@ -457,6 +474,8 @@ process_material = SubResource("ParticleProcessMaterial_vau2m")
 bus = &"PlayerBoardEffects"
 
 [connection signal="command_placed" from="Game/MarginContainer/Control/CommandPanel" to="." method="_on_command_panel_command_placed"]
+[connection signal="mouse_entered" from="Game/MarginContainer/Control/EraseButton" to="." method="_on_control_mouse_entered"]
+[connection signal="pressed" from="Game/MarginContainer/Control/EraseButton" to="." method="_on_erase_button_pressed"]
 [connection signal="mouse_entered" from="Foreground/Control" to="." method="_on_control_mouse_entered"]
 [connection signal="pressed" from="Foreground/Control/CleanButton" to="." method="_on_clean_button_pressed"]
 [connection signal="pressed" from="Foreground/Control/SendButton" to="." method="_on_send_button_pressed"]
