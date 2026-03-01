@@ -18,6 +18,19 @@ O jogo todo é pensado para ser jogado com o mouse, mas há dois atalhos úteis 
 `[ESC]` Para soltar um carimbo
 `[BACKSPACE]` Para apagar o último comando
 
+### Dicas
+
+O jogo incentiva tentativa e erro, mas segue uma breve descrição das mecânicas:
+
+* Toten: cria checkpoint
+* Escaner: escaneia os quadrados adjacentes (ortogonais e em diagonal)
+* Desarme de armadilha: se utiliza no quadrado anterior à armadilha
+* Bola de fogo: se utiliza no mesmo quadrado em que está o inimigo
+
+## Classificação Indicativa
+
+Livre
+
 ## Créditos de Terceiros
 
 ### Músicas
