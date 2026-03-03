@@ -41,11 +41,11 @@ jobs:
         run: godot --headless --path ./source/ --export-release ${{ matrix.target }} ../compiled/${{ matrix.target }}/${{ matrix.bin-name }}
 
       - uses: XanatosX/butler-publish-itchio-action@master
-        name: Publish Windows Version
+        name: Publish ${{ matrix.target }} Version
         env:
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
           CHANNEL: ${{ matrix.target }}
           ITCH_GAME: ruinas-de-krimbo
           ITCH_USER: lazaromenezes
-          PACKAGE: compiled/windows
+          PACKAGE: compiled/${{ matrix.target }}
           VERSION: ${{ env.USER_VERSION }}
