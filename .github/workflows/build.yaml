@@ -5,6 +5,7 @@ on:
     - main
     paths:
     - 'source/**'
+    - '.github/workflows/build.yaml'
 
 env:
   GODOT_VERSION: 4.6.0
