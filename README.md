@@ -7,9 +7,9 @@ Explore as masmorras das ruínas utilizando os comandos disponiveís, o que ser�
 
 ## Equipe Urutau
 
-Gabriela Chaplin: Game Design, Arte 2D
-Lázaro Menezes: Game Design, Programação
-Ulisses Manoel: Game Design, Arte 2D
+* Gabriela Chaplin: Game Design, Arte 2D
+* Lázaro Menezes: Game Design, Programação
+* Ulisses Manoel: Game Design, Arte 2D
 
 ## Controles
 
