@@ -18,8 +18,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target: [windows, linux]
-        bin-name: [krimbo.exe, krimbo.x86_64]
+        include:
+          - target: windows
+            bin-name: krimbo.exe
+          - target: linux
+            bin-name: krimbo.x86_64
     steps:
       - uses: actions/checkout@v4
         name: Checkout
